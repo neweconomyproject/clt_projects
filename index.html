@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS Imports -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+  <style>.leaflet-popup-tip {width: 0px; height: 0px;padding: 0px;}</style>
+  <style>.leaflet-popup-content-wrapper .leaflet-popup-content { font-family: 'Merriweather', serif;}</style>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <div class="topnav">
+    <button class="topbuttonsleft" onclick="showHome()">Guilford County Fire Risk Assessment Tool</button>
+    <div class="topnav-right">
+      <button class="topbuttonsright"  onclick="showMarkdown()">Markdown</button>
+      <button class="topbuttonsright" onclick="showAbout()">About</button>
+    </div>
+  </div>
+
+  <!-- Top Navigation Multi Color-->
+  <div class="topnavyellow"  div id="topnavyellow" >
+  </div>
+
+  <!-- About-->
+  <div class="about"  div id="about" >
+  </div>
+
+  <!-- markdown-->
+  <div class="markdown"  div id="markdown" >
+  </div>
+
+  <!-- map-->
+  <div id="map" class="map" ></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" div id="sidebar">
+    <label class="container">Fire Stations:
+      <input type="checkbox" div id = "checked" onclick=" showFireStations()">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Districts:
+      <input type="checkbox" div id = "checked" onclick=" showFireDistricts()">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+
+  <!-- Sidebar Background Color-->
+  <div class="sidebarback" div id="sidebarback">
+  </div>
+</body>
+
+ <!-- Javascript Imports -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+ <script src="js/jquery-2.2.0.js"></script>
+ <script src="js/underscore.js"></script>
+ <script src="js/fireStations.js"></script>
+ <script src="js/FireDistricts.js"></script>
+ <script src="js/RiskNet.js"></script>
+ <script src="js/main.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha256-c9vxcXyAG4paArQG3xk6DjyW/9aHxai2ef9RpMWO44A=" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js" crossorigin="anonymous" ></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
+
+</html>
