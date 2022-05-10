@@ -2,6 +2,72 @@ body {
   margin: 0;
 }
 
+.district-name {
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.legend-name{
+  position:absolute;
+  left: 20px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.legend-class1{
+  position:absolute;
+  left: 55px;
+  top:52px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.legend-class2{
+  position:absolute;
+  left: 55px;
+  top:92px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.legend-class3{
+  position:absolute;
+  left: 55px;
+  top:132px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.legend-class4{
+  position:absolute;
+  left: 55px;
+  top:172px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.legend-class5{
+  position:absolute;
+  left: 55px;
+  top:212px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+#results{
+  position: absolute;
+  top: 360px;
+  left:25px;
+}
+
 .topnav {
   overflow: hidden;
   background-color: #922b26;
@@ -79,6 +145,23 @@ body {
   z-index:10;
 }
 
+.modal{
+  display: none;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right:0px;
+  left:0px;
+  z-index:300;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal_button{
+  position:absolute;
+  right:15px;
+}
+
+
 .markdown{
   display: none;
   position: absolute;
@@ -105,7 +188,7 @@ body {
   left: 22px;
   width: 390px;
   top: 64px;
-  bottom: 200px;
+  bottom: 30px;
   overflow-y: auto;
   padding: 15px;
   font-size: 16px;
@@ -119,7 +202,7 @@ body {
   left: 22px;
   width: 390px;
   top: 64px;
-  bottom: 200px;
+  bottom: 30px;
   overflow-y: auto;
   padding: 15px;
   font-size: 16px;
@@ -136,6 +219,7 @@ body {
 }
 
 .container {
+  top:65px;
   display: block;
   position: relative;
   padding-left: 25px;
@@ -162,7 +246,7 @@ body {
 .checkmark {
   position: absolute;
   top: 24px;
-  right: 210px;
+  right: 180px;
   height: 22px;
   width: 22px;
   background-color: #eee;
@@ -198,4 +282,304 @@ body {
   transform: rotate(45deg);
 }
 
+.dropbtn {
+  background-color: #922b26;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #922b26;
+}
 
+#myInput {
+  box-sizing: border-box;
+  background-image: url('images/magnifying-glass-search.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  font-family: 'Merriweather', serif;
+  padding: 14px 10px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: absolute;
+  display: block;
+  z-index: 18;
+  top:20px;
+  left:20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  font-family: 'Merriweather', serif;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+.fakebutton{
+  background-color: gray;
+  color: white;
+  font-size: 12px;
+  font-family: 'Merriweather', serif;
+  border: none;
+  cursor: pointer;
+  position:absolute;
+  left:43px;
+  top:180px;
+  padding:12px;
+}
+
+.dropbtn2 {
+  background-color: gray;
+  color: white;
+  padding: 12px;
+  font-size: 12px;
+  font-family: 'Merriweather', serif;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn2:hover, .dropbtn2:focus {
+  background-color: gray;
+}
+
+#myInput2 {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  font-family: 'Merriweather', serif;
+  padding: 14px 10px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput2:focus {outline: 3px solid #ddd;}
+
+.dropdown2 {
+  position: absolute;
+  display: block;
+  z-index: 11;
+  top:300px;
+  left:40px;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  font-family: 'Merriweather', serif;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content2 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown2 a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+
+.legend-gradient {
+  display: none;
+  position: absolute;
+  background-color: #e3e3e3;
+  border-radius: 5px;
+  opacity: 0.77;
+  z-index: 9;
+  right: 0;
+  bottom: 0;
+  height: 260px;
+  width: 200px;
+  margin: 30px;
+}
+
+.gradient1 {
+  position: absolute;
+  background-color: #E9D5D4;
+  z-index: 2100;
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+  text-indent: 30px;
+  top:30px;
+}
+
+.gradient2 {
+  position: absolute;
+  background-color: #D3AAA8;
+  z-index: 2100;
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+  text-indent: 30px;
+  top:70px;
+}
+.gradient3 {
+  position: absolute;
+  background-color: #BE807D;
+  z-index: 2100;
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+  text-indent: 30px;
+  top:110px;
+}
+.gradient4 {
+  position: absolute;
+  background-color: #A85551;
+  z-index: 2100;
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+  text-indent: 30px;
+  top:150px;
+}
+.gradient5 {
+  position: absolute;
+  background-color:#922b26;
+  z-index: 2100;
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+  text-indent: 30px;
+  top:190px;
+}
+
+.downloadPDF{
+    background-color: white;
+    color: #922b26;
+    padding: 12px;
+    font-size: 14px;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    left:20px; 
+    bottom:30px;
+    position:absolute;
+  }
+
+
+  #table{
+    display: none;
+    font-size: 14px;
+    font-family: 'Merriweather', serif;
+    left:20px; 
+    bottom:150px;
+    width: 100%;
+    position:absolute;
+  }
+
+
+  .legend-risk {
+    display: none;
+    position: absolute;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    opacity: 0.77;
+    z-index: 9;
+    right: 0;
+    bottom: 0;
+    height: 260px;
+    width: 200px;
+    margin: 30px;
+  }
+
+  .risk-name {
+    font-size: 16px;
+    font-family: 'Merriweather', serif; 
+    font-weight: bold; 
+    position: absolute;
+    left:15px; 
+  }
+
+  .risk1 {
+    position: absolute;
+    background-color: #E0BE28;
+    z-index: 2100;
+    height: 20px;
+    width: 20px;
+    margin: 20px;
+    text-indent: 30px;
+    top:30px;
+  }
+  
+  .risk2 {
+    position: absolute;
+    background-color: #B97527;
+    z-index: 2100;
+    height: 20px;
+    width: 20px;
+    margin: 20px;
+    text-indent: 30px;
+    top:70px;
+  }
+  .risk3 {
+    position: absolute;
+    background-color: #922B26;
+    z-index: 2100;
+    height: 20px;
+    width: 20px;
+    margin: 20px;
+    text-indent: 30px;
+    top:110px;
+  }
+
+  .legend-risk1{
+    position:absolute;
+    left: 55px;
+    top:52px;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .legend-risk2{
+    position:absolute;
+    left: 55px;
+    top:92px;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .legend-risk3{
+    position:absolute;
+    left: 55px;
+    top:132px;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 12px;
+  }

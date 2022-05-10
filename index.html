@@ -36,6 +36,10 @@
   <div class="topnavyellow"  div id="topnavyellow" >
   </div>
 
+  <!-- modal-->
+  <div class="modal"  div id="modal" onclick = "byeModal()">
+  </div>
+
   <!-- About-->
   <div class="about"  div id="about" >
   </div>
@@ -49,20 +53,130 @@
 
   <!-- Sidebar -->
   <div class="sidebar" div id="sidebar">
+  <button class="modal_button" onclick="showModal()">?</button>
+  <!-- District Search-->
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Zoom to :</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input type="text" placeholder="District" id="myInput" onkeyup="filterFunction()">
+      <a href="#Alamance Community" onclick="zoom1()">Alamance Community</a>
+      <a href="#Climax"onclick="zoom2()">Climax</a>
+      <a href="#Colfax"onclick="zoom3()">Colfax</a>
+      <a href="#District13"onclick="zoom4()">District 13</a>
+      <a href="#District28"onclick="zoom5()">District 28</a>
+      <a href="#Gibsonville"onclick="zoom6()">Gibsonville</a>
+      <a href="#Guil-Rand"onclick="zoom7()">Guil-Rand</a>
+      <a href="#HighPoint"onclick="zoom8()">High Point</a>
+      <a href="#Julian"onclick="zoom9()">Julian</a>
+      <a href="#Kernersville"onclick="zoom10()">Kernersville</a>
+      <a href="#Kimesville"onclick="zoom11()">Kimesville</a>
+      <a href="#McLeansville"onclick="zoom12()">McLeansville</a>
+      <a href="#MtHope"onclick="zoom13()">Mt. Hope</a>
+      <a href="#NEGuilford"onclick="zoom14()">NE Guilford</a>
+      <a href="#OakRidge"onclick="zoom15()">Oak Ridge</a>
+      <a href="#PiedmontTriadAmbulanceandRescue"onclick="zoom16()">Piedmont Triad Ambulance and Rescue</a>
+      <a href="#PinecroftSedgefield"onclick="zoom17()">Pinecroft-Sedgefield</a>
+      <a href="#PleasantGarden"onclick="zoom18()">Pleasant Garden</a>
+      <a href="#Southeast"onclick="zoom19()">Southeast</a>
+      <a href="#Stokesdale"onclick="zoom20()">Stokesdale</a>
+      <a href="#Summerfield"onclick="zoom21()">Summerfield</a>
+      <a href="#Whitsett"onclick="zoom22()">Whitsett</a>
+    </div>
+  </div>
+  <!-- layers-->
     <label class="container">Fire Stations:
       <input type="checkbox" div id = "checked" onclick=" showFireStations()">
       <span class="checkmark"></span>
     </label>
+    <label class="container">Predicted Risk:
+      <input type="checkbox" div id = "checked" onclick=" showRiskNet()">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container"> </label>
     <label class="container">Districts:
       <input type="checkbox" div id = "checked" onclick=" showFireDistricts()">
       <span class="checkmark"></span>
     </label>
+    <!-- district attributes-->
+    <div class="dropdown2">
+      <button onclick="myFunction2()" class="dropbtn2">Filter</button>
+      <div id="myDropdown2" class="dropdown-content2">
+        <input type="text" placeholder="Filter" id="myInput2" onkeyup="filterFunction2()">
+        <a href="#Budget" onclick="Budget()">Budget</a>
+        <a href="#AvgBusy"onclick="AverageBusy()">Average Busy Minutes</a>
+        <a href="#AnnBusy"onclick="AnnualBusy()">Anuual Busy Hours</a>
+        <a href="#TotalStaff"onclick="TotalStaff()">Total Staff</a>
+        <a href="#PerCareer"onclick="PercentCareer()">Percent Career</a>
+        <a href="#PredRisk"onclick="PredictedRisk()">Predicted Risk</a>
+        <a href="#NormRisk"onclick="NormalizedRisk()">Predicted Risk (Normalized)</a>
+      </div>
+    </div>
+    <div id="results" >
+      <p class="district-name"> <span class="district-name"></span></p>
+    </div>
+    <div id="fakebutton" >
+      <p class="fakebutton">Filter</p>
+    </div>
+    <!-- information table-->
+    <div id="table">
+    <table style="width:100%; font-size: 14px; font-family: 'Merriweather', serif;">
+      <tr>
+        <th>Rank</th>
+        <th>Highest</th>
+        <th>Lowest</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><span class="high-1">filler</span></td>
+        <td><span class="low-1">filler</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="high-2">filler</span></td>
+        <td><span class="low-2">filler</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="high-3">filler</span></td>
+        <td><span class="low-3">filler</span></td>
+      </tr>
+    </table>
+    </div>
+    <!-- PDF Button-->
+    <div class="buttonbox">
+      <button class= "downloadPDF" id="downloadPDF">Download PDF Report</button>
+    </div>
   </div>
 
   <!-- Sidebar Background Color-->
   <div class="sidebarback" div id="sidebarback">
   </div>
+  <!-- Legend Gradient-->
+  <div class="legend-gradient" div id="legend-gradient">
+    <p class="legend-name"> <span class="legend-name"></span></p>
+    <div class="gradient1"></div>
+    <div class="gradient2"></div>
+    <div class="gradient3"></div>
+    <div class="gradient4"></div>
+    <div class="gradient5"></div>
+    <span class="legend-class1">filler</span>
+    <span class="legend-class2">filler</span>
+    <span class="legend-class3">filler</span>
+    <span class="legend-class4">filler</span>
+    <span class="legend-class5">filler</span>
+  </div>
+  <!-- Legend Risk-->
+  <div class="legend-risk" div id="legend-risk">
+    <p class="risk-name"> Risk</p>
+    <div class="risk1"></div>
+    <div class="risk2"></div>
+    <div class="risk3"></div>
+    <span class="legend-risk1">Low</span>
+    <span class="legend-risk2">Medium</span>
+    <span class="legend-risk3">High</span>
+  </div>
 </body>
+
 
  <!-- Javascript Imports -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
