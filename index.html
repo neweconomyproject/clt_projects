@@ -110,9 +110,15 @@
         <a href="#PerCareer"onclick="PercentCareer()">Percent Career</a>
       </div>
     </div>
-    <div id="results" >
-      <p class="district-name"> <span class="district-name"></span></p>
+    <!-- risk filter-->
+    <div class="dropdown3">
+      <button onclick="myFunction3()" class="dropbtn3">Filter</button>
+      <div id="myDropdown3" class="dropdown-content3">
+        <input type="text" placeholder="Filter" id="myInput3" onkeyup="filterFunction3()">
+        <a href="#Normalize" onclick="Normalize()">Normalize</a>
+      </div>
     </div>
+
     <!-- information table-->
     <div id="table">
     <table style="width:100%; font-size: 12px; font-family: 'Merriweather', serif;">
@@ -193,6 +199,68 @@
   </div>
 </body>
 
+<!--PDF-->
+<div id="content4" style= "bottom:0px;right:0px;width: 100px;height: 100px;">
+  <div id="content3" style="position: absolute;right:0px;
+        top:0px;bottom:0px;width: 11in;height: 8.5in;">
+    <div id="content2" style="  position: absolute;
+      background-color: white;
+      z-index: 2000;
+      left: 0px;
+      width: 11in;
+      height: 8.5in;" >
+      <div class="photo" style="position: absolute;">
+      <img class =img src="https://i.postimg.cc/FzZGJqNh/Guilford-County-Fire-Doc.png" style="width: 100%; height: 100%; z-index: 5" />
+      </div>
+        <!-- map-->
+    <div id="map2" class="map2" ></div>
+          <!-- information table-->
+    <div id="table2">
+      <table style="position:absolute; width:50%; left:50px; top:150px; font-size: 12px; font-family: 'Merriweather', serif;">
+        <tr>
+          <th>Rank</th>
+          <th>Highest</th>
+          <th>   </th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><span class="high-1">filler</span></td>
+          <td><span class="high1-value">filler</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="high-2">filler</span></td>
+          <td><span class="high2-value">filler</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="high-3">filler</span></td>
+          <td><span class="high3-value">filler</span></td>
+        </tr>
+        <tr>
+          <th></th>
+          <th>Lowest</th>
+          <th>   </th>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td><span class="low-1">filler</span></td>
+          <td><span class="low1-value">filler</span></td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td><span class="low-2">filler</span></td>
+          <td><span class="low2-value">filler</span></td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td><span class="low-3">filler</span></td>
+          <td><span class="low3-value">filler</span></td>
+        </tr>
+      </table>
+      </div>
+      </div></div>
+    </div>
 
  <!-- Javascript Imports -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -209,3 +277,19 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
 
 </html>
+
+
+<script>
+
+  $('#downloadPDF').click(function () {
+    domtoimage.toPng(document.getElementById('content2'))
+        .then(function (blob) {
+            var pdf = new jsPDF('l', 'pt', 'letter');
+
+            pdf.addImage(blob, 'PNG', 0, 0, $('.img').width(), $('.img').height());
+            pdf.save("test.pdf");
+
+
+        });
+});
+</script>

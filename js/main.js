@@ -18,6 +18,26 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
   ext: 'png'
 }).addTo(map);
 
+//load map2
+var map2 = L.map('map2', {
+  center: [36.09, -79.885],
+  zoom: 11,
+  zoomControl: false
+});
+
+//add zoom control top right
+L.control.zoom({
+  position:'topright'
+}).addTo(map2);
+
+var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  subdomains: 'abcd',
+  minZoom: 0,
+  maxZoom: 20,
+  ext: 'png'
+}).addTo(map2);
+
 //FIRE STATIONS
 //load fire stations
 var features = [];
@@ -26,10 +46,6 @@ newArray = []
 for (var i = 0; i < features.length; i = i + 1 ) {  
   newArray.push(Object.values(features[i]))
   };
-// for (var i = 1; i < newArray.length; i = i + 1 ) {
-//   L.marker([newArray[i][2].coordinates[1], newArray[i][2].coordinates[0]],{icon: L.icon({  
-//     iconUrl: 'images/fire-station.png', iconSize: [25, 25]})}).bindPopup("Name: "+ newArray[i][1].Name).addTo(map) 
-//   }
 
 //add and remove marker functions
 var addToMap = function(){markers.forEach(function(marker){marker.addTo(map)})}
@@ -64,7 +80,6 @@ function styleb(feature) {
 }
 
 //hide and show fire districts
-//need to figure out come back on click
 var FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleb,
   onEachFeature: function (feature, layer) {
     layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget+"<br>"+
@@ -82,6 +97,8 @@ if(map.hasLayer(FireDistrictsLayer)==true){
     x.style.display = 'none';
   y = document.getElementById("table");
   y.style.display = 'none';
+  y2 = document.getElementById("table2");
+  y2.style.display = 'none';
 }
 else{
   FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleb,
@@ -151,6 +168,8 @@ function Budget() {
     $('.low3-value').text("14481")
     x = document.getElementById("table");
     x.style.display = 'block';
+    x2 = document.getElementById("table2");
+    x2.style.display = 'block';
   }}
 
 
@@ -208,6 +227,8 @@ function AverageBusy() {
     $('.low3-value').text("11.9")
     x = document.getElementById("table");
     x.style.display = 'block';
+    x2 = document.getElementById("table2");
+    x2.style.display = 'block';
   }}
 
   //ANNUAL BUSY HOUR
@@ -264,6 +285,8 @@ function getColorABH(d) {
      $('.low3-value').text("16")
      x = document.getElementById("table");
      x.style.display = 'block';
+     x2 = document.getElementById("table2");
+     x2.style.display = 'block';
    }}
 
  //TOTAL STAFF
@@ -320,6 +343,8 @@ function getColorABH(d) {
      $('.low3-value').text("27")
      x = document.getElementById("table");
      x.style.display = 'block';
+     x2 = document.getElementById("table2");
+     x2.style.display = 'block';
    }}
 
 
@@ -377,6 +402,8 @@ function getColorPC(d) {
      $('.low3-value').text("0")
      x = document.getElementById("table");
      x.style.display = 'block';
+     x2 = document.getElementById("table2");
+     x2.style.display = 'block';
    }}
 
  
@@ -384,7 +411,7 @@ function getColorPC(d) {
 //RISK NET
 //hide and show risk net
 
-// var RiskNet= L.geoJSON(RiskNet)
+
 // set color palette risk surface
 function getColor(d) {
   return d > 4.14 ? '#922B26' :
@@ -393,8 +420,6 @@ function getColor(d) {
                     '#FFEDA0';
 }
 
-//style function risk surface
-//SAME ISSUE PULLING PREDICTIONS
 function style(feature) {
   return {
       fillColor: getColor(feature.properties.pred),
@@ -406,13 +431,12 @@ function style(feature) {
 }
 
 //map RiskNet
-var RiskNet=L.geoJson(RiskNet, {style: style});
-console.log(RiskNet.properties.pred)
+var RiskNetLayer=L.geoJson(RiskNet, {style: style});
 
 // RiskNet.setStyle({color: "#f94144"});
 function showRiskNet() {
-if(map.hasLayer(RiskNet)==true){
-  map.removeLayer(RiskNet)
+if(map.hasLayer(RiskNetLayer)==true){
+  map.removeLayer(RiskNetLayer)
   z = document.getElementById("legend-risk");
   z.style.display = 'none';
 }
@@ -421,8 +445,42 @@ else{
   x.style.display = 'none';
   y = document.getElementById("legend-risk");
   y.style.display = 'block';
-  map.addLayer(RiskNet)
+  RiskNetLayer=L.geoJson(RiskNet, {style: style});
+  map.addLayer(RiskNetLayer)
 }}
+
+//NORMALIZED RISK
+
+// set color palette risk surface
+function getColorNR(d) {
+  return d > 4.14 ? '#922B26' :
+         d > 1.19  ? '#B97527' :
+         d > 0  ? '#E0BE28' :
+                    '#FFEDA0';
+}
+
+//style function risk surface
+function styleNR(feature) {
+  return {
+      fillColor: getColorNR(feature.properties.normalized),
+      weight: .6,
+      opacity: 1,
+      color: 'white',
+      fillOpacity: 0.7
+  };
+}
+
+ function Normalize() {
+   if(map.hasLayer(RiskNetLayer)==true){
+  
+     map.removeLayer(RiskNetLayer)
+     RiskNetLayer= L.geoJSON(RiskNet, {style: styleNR});
+     map.addLayer(RiskNetLayer)
+     x = document.getElementById("legend-gradient");
+     y = document.getElementById("legend-risk");
+     x.style.display = 'none';
+     y.style.display = 'block';
+   }}
 
 //show about page 
 function showAbout() {
@@ -505,6 +563,9 @@ function filterFunction2() {
     }
   }
 }
+
+
+
 
 function zoom1() {
   $('.district-name').text("Alamance Community")
@@ -629,16 +690,24 @@ function myFunction2() {
   document.getElementById("myDropdown2").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn2')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content2");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+
+//filter
+function filterFunction3() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput3");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown3");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
     }
   }
+}
+
+function myFunction3() {
+  document.getElementById("myDropdown3").classList.toggle("show");
 }
