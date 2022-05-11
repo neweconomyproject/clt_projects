@@ -340,18 +340,6 @@ body {
 
 .show {display: block;}
 
-.fakebutton{
-  background-color: gray;
-  color: white;
-  font-size: 12px;
-  font-family: 'Merriweather', serif;
-  border: none;
-  cursor: pointer;
-  position:absolute;
-  left:43px;
-  top:180px;
-  padding:12px;
-}
 
 .dropbtn2 {
   background-color: gray;
@@ -487,7 +475,7 @@ body {
     border: none;
     cursor: pointer;
     left:20px; 
-    bottom:30px;
+    top:580px;
     position:absolute;
   }
 
@@ -497,8 +485,8 @@ body {
     font-size: 14px;
     font-family: 'Merriweather', serif;
     left:20px; 
-    bottom:150px;
-    width: 100%;
+    top:420px;
+    width: 300px;
     position:absolute;
   }
 
@@ -512,7 +500,7 @@ body {
     z-index: 9;
     right: 0;
     bottom: 0;
-    height: 260px;
+    height: 180px;
     width: 200px;
     margin: 30px;
   }

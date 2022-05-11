@@ -58,7 +58,7 @@ function styleb(feature) {
       fillColor: "#d3d3d3",
       weight: .6,
       opacity: 1,
-      color: 'white',
+      color: 'black',
       fillOpacity: 0.7
   };
 }
@@ -67,7 +67,12 @@ function styleb(feature) {
 //need to figure out come back on click
 var FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleb,
   onEachFeature: function (feature, layer) {
-    layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget);
+    layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget+"<br>"+
+    'Average Busy Minutes: '+feature.properties.AvgBusyMin+"<br>"+'Annual Busy Hours: '+feature.properties.AnBusyHour+"<br>"+
+    "Total Staff: "+feature.properties.TotStaff+"<br>"+
+    "Percent Career: "+feature.properties.PerCareer+"<br>"+
+    "Average Predicted Risk: "+feature.properties.RiskMean + "<br>"+
+    "Average Predicted Risk (normalized): "+feature.properties.RiskMeanNo);
   }
 });
 function showFireDistricts() {
@@ -81,7 +86,12 @@ if(map.hasLayer(FireDistrictsLayer)==true){
 else{
   FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleb,
     onEachFeature: function (feature, layer) {
-      layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget);
+      layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget+"<br>"+
+      'Average Busy Minutes: '+feature.properties.AvgBusyMin+"<br>"+'Annual Busy Hours: '+feature.properties.AnBusyHour+"<br>"+
+      "Total Staff: "+feature.properties.TotStaff+"<br>"+
+      "Percent Career: "+feature.properties.PerCareer+"<br>"+
+      "Median Predicted Risk: "+feature.properties.RiskMed+ "<br>"+
+      "Median Predicted Risk (normalized): "+feature.properties.RiskMedNo);
     }
   });
   map.addLayer(FireDistrictsLayer)
@@ -133,11 +143,243 @@ function Budget() {
     $('.low-1').text("Gibsonville")
     $('.low-2').text("Julian")
     $('.low-3').text("Kimesville")
+    $('.high1-value').text("3271099")
+    $('.high2-value').text("2534542")
+    $('.high3-value').text("1820565")
+    $('.low1-value').text("125996")
+    $('.low2-value').text("107249")
+    $('.low3-value').text("14481")
     x = document.getElementById("table");
     x.style.display = 'block';
   }}
 
 
+//AVERAGE BUSY MINUTE
+function getColorABM(d) {
+ return d > 35 ? '#922b26' :
+        d > 30  ? '#A85551' :
+        d > 25  ? '#BE807D' :
+        d > 20  ? '#D3AAA8' :
+        d > 0   ? '#E9D5D4' :
+          '#d3d3d3';
+      }
+
+function styleABM(feature) {
+          return {
+          fillColor: getColorABM(feature.properties.AvgBusyMin),
+            weight: .6,
+            opacity: 1,
+            color: 'white',
+            fillOpacity: 0.7
+        };
+      }
+
+function AverageBusy() {
+  if(map.hasLayer(FireDistrictsLayer)==true){
+ 
+    map.removeLayer(FireDistrictsLayer)
+    FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleABM,
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Average Busy Minutes: '+feature.properties.AvgBusyMin);
+      }
+    });
+    map.addLayer(FireDistrictsLayer)
+    $('.legend-name').text("Average Busy Minutes")
+    $('.legend-class1').text("0 - 20")
+    $('.legend-class2').text("21 - 25")
+    $('.legend-class3').text("26 - 30")
+    $('.legend-class4').text("31 - 35")
+    $('.legend-class5').text(">36")
+    y = document.getElementById("legend-risk");
+    y.style.display = 'none';
+     x = document.getElementById("legend-gradient");
+    x.style.display = 'block';
+    $('.high-1').text("NE Guilford")
+    $('.high-2').text("Julian")
+    $('.high-3').text("Piedmont Triad Ambulance and Rescue")
+    $('.low-1').text("Gibsonville")
+    $('.low-2').text("Greensboro")
+    $('.low-3').text("Kernersville ")
+    $('.high1-value').text("51.9")
+    $('.high2-value').text("46.6")
+    $('.high3-value').text("36.4")
+    $('.low1-value').text("19.5")
+    $('.low2-value').text("17.9")
+    $('.low3-value').text("11.9")
+    x = document.getElementById("table");
+    x.style.display = 'block';
+  }}
+
+  //ANNUAL BUSY HOUR
+function getColorABH(d) {
+  return d > 35 ? '#922b26' :
+         d > 30  ? '#A85551' :
+         d > 25  ? '#BE807D' :
+         d > 20  ? '#D3AAA8' :
+         d > 0   ? '#E9D5D4' :
+           '#d3d3d3';
+       }
+ 
+ function styleABH(feature) {
+           return {
+           fillColor: getColorABH(feature.properties.AvgBusyMin),
+             weight: .6,
+             opacity: 1,
+             color: 'white',
+             fillOpacity: 0.7
+         };
+       }
+ 
+ function AnnualBusy() {
+   if(map.hasLayer(FireDistrictsLayer)==true){
+  
+     map.removeLayer(FireDistrictsLayer)
+     FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleABH,
+       onEachFeature: function (feature, layer) {
+         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Annual Busy Hours: '+feature.properties.AnBusyHour);
+       }
+     });
+     map.addLayer(FireDistrictsLayer)
+     $('.legend-name').text("Annual Busy Hours")
+     $('.legend-class1').text("0 - 75")
+     $('.legend-class2').text("76 - 175")
+     $('.legend-class3').text("176 - 300")
+     $('.legend-class4').text("301 - 500")
+     $('.legend-class5').text(">501")
+     y = document.getElementById("legend-risk");
+     y.style.display = 'none';
+      x = document.getElementById("legend-gradient");
+     x.style.display = 'block';
+     $('.high-1').text("Greensboro")
+     $('.high-2').text("Pinecroft-Sedgefield")
+     $('.high-3').text("NE Guilford")
+     $('.low-1').text("Kimesville")
+     $('.low-2').text("Piedmont Triad")
+     $('.low-3').text("Kernersville")
+     $('.high1-value').text("5700")
+     $('.high2-value').text("1232")
+     $('.high3-value').text("1027")
+     $('.low1-value').text("56")
+     $('.low2-value').text("28")
+     $('.low3-value').text("16")
+     x = document.getElementById("table");
+     x.style.display = 'block';
+   }}
+
+ //TOTAL STAFF
+ function getColorTS(d) {
+  return d > 50 ? '#922b26' :
+         d > 45  ? '#A85551' :
+         d > 40  ? '#BE807D' :
+         d > 35  ? '#D3AAA8' :
+         d > 0   ? '#E9D5D4' :
+           '#d3d3d3';
+       }
+ 
+ function styleTS(feature) {
+           return {
+           fillColor: getColorTS(feature.properties.TotStaff),
+             weight: .6,
+             opacity: 1,
+             color: 'white',
+             fillOpacity: 0.7
+         };
+       }
+ 
+ function TotalStaff() {
+   if(map.hasLayer(FireDistrictsLayer)==true){
+  
+     map.removeLayer(FireDistrictsLayer)
+     FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleTS,
+       onEachFeature: function (feature, layer) {
+         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Total Staff: '+feature.properties.TotStaff);
+       }
+     });
+     map.addLayer(FireDistrictsLayer)
+     $('.legend-name').text("Total Staff")
+     $('.legend-class1').text("0 - 35")
+     $('.legend-class2').text("36 - 40")
+     $('.legend-class3').text("41 - 45")
+     $('.legend-class4').text("46 - 50")
+     $('.legend-class5').text(">51")
+     y = document.getElementById("legend-risk");
+     y.style.display = 'none';
+      x = document.getElementById("legend-gradient");
+     x.style.display = 'block';
+     $('.high-1').text("Greensboro")
+     $('.high-2').text("High Point")
+     $('.high-3').text("Guil-Rand")
+     $('.low-1').text("Gibsonville")
+     $('.low-2').text("Southeast")
+     $('.low-3').text("Kimesville")
+     $('.high1-value').text("576")
+     $('.high2-value').text("234")
+     $('.high3-value').text("114")
+     $('.low1-value').text("29")
+     $('.low2-value').text("27")
+     $('.low3-value').text("27")
+     x = document.getElementById("table");
+     x.style.display = 'block';
+   }}
+
+
+//PERCAREER
+function getColorPC(d) {
+  return d > 50 ? '#922b26' :
+         d > 30  ? '#A85551' :
+         d > 20  ? '#BE807D' :
+         d > 5  ? '#D3AAA8' :
+         d > 0   ? '#E9D5D4' :
+           '#d3d3d3';
+       }
+ 
+ function stylePC(feature) {
+           return {
+           fillColor: getColorPC(feature.properties.PerCareer),
+             weight: .6,
+             opacity: 1,
+             color: 'white',
+             fillOpacity: 0.7
+         };
+       }
+ 
+ function PercentCareer() {
+   if(map.hasLayer(FireDistrictsLayer)==true){
+  
+     map.removeLayer(FireDistrictsLayer)
+     FireDistrictsLayer= L.geoJSON(FireDistricts, {style: stylePC,
+       onEachFeature: function (feature, layer) {
+         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Percent Career Staff: '+feature.properties.PerCareer);
+       }
+     });
+     map.addLayer(FireDistrictsLayer)
+     $('.legend-name').text("Percent Career")
+     $('.legend-class1').text("0 - 5")
+     $('.legend-class2').text("6 - 20")
+     $('.legend-class3').text("21 - 30")
+     $('.legend-class4').text("31 - 50")
+     $('.legend-class5').text(">51")
+     y = document.getElementById("legend-risk");
+     y.style.display = 'none';
+      x = document.getElementById("legend-gradient");
+     x.style.display = 'block';
+     $('.high-1').text("Greensboro")
+     $('.high-2').text("High Point")
+     $('.high-3').text("Kernersville")
+     $('.low-1').text("Julian")
+     $('.low-2').text("Southeast")
+     $('.low-3').text("Kimesville")
+     $('.high1-value').text("100")
+     $('.high2-value').text("100")
+     $('.high3-value').text("100")
+     $('.low1-value').text("0")
+     $('.low2-value').text("0")
+     $('.low3-value').text("0")
+     x = document.getElementById("table");
+     x.style.display = 'block';
+   }}
+
+ 
 
 //RISK NET
 //hide and show risk net
@@ -374,6 +616,12 @@ function zoom22() {
   $('.district-name').text("Whitsett")
   zoom =12
   map.flyTo([36.07571, -79.57812],zoom);
+}
+
+function greensboro(){
+  $('.district-name').text("Greensboro")
+  zoom =12
+  map.flyTo([36.087231, -79.833755],zoom);
 }
 
 //filter
