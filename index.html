@@ -18,6 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script> 
   <style>.leaflet-popup-tip {width: 0px; height: 0px;padding: 0px;}</style>
   <style>.leaflet-popup-content-wrapper .leaflet-popup-content { font-family: 'Merriweather', serif;}</style>
 </head>
@@ -200,7 +202,7 @@
 </body>
 
 <!--PDF-->
-<div id="content4" style= "bottom:0px;right:0px;width: 100px;height: 100px;">
+<div id="content4" style= " bottom:0px;right:0px;width: 100px;height: 100px; position:absolute;z-index:-1;">
   <div id="content3" style="position: absolute;right:0px;
         top:0px;bottom:0px;width: 11in;height: 8.5in;">
     <div id="content2" style="  position: absolute;
@@ -216,7 +218,7 @@
     <div id="map2" class="map2" ></div>
           <!-- information table-->
     <div id="table2">
-      <table style="position:absolute; width:50%; left:50px; top:150px; font-size: 12px; font-family: 'Merriweather', serif;">
+      <table style="position:absolute; width:100%; font-size: 12px; font-family: 'Merriweather', serif;">
         <tr>
           <th>Rank</th>
           <th>Highest</th>

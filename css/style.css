@@ -413,6 +413,20 @@ body {
   margin: 30px;
 }
 
+.legend-gradient2 {
+  display: none;
+  position: absolute;
+  background-color: #e3e3e3;
+  border-radius: 5px;
+  opacity: 0.77;
+  z-index: 3000;
+  left: 20px;
+  bottom: 40px;
+  height: 260px;
+  width: 200px;
+  margin: 30px;
+}
+
 .gradient1 {
   position: absolute;
   background-color: #E9D5D4;
@@ -493,9 +507,9 @@ body {
   #table2{
     display: none;
     font-size: 14px;
-    left:20px; 
-    top:20px; 
-    width: 400px;
+    left:60px; 
+    top:160px; 
+    width: 200px;
     font-family: 'Merriweather', serif;
     position:absolute;
     z-index:2001;
@@ -510,6 +524,20 @@ body {
     opacity: 0.77;
     z-index: 9;
     right: 0;
+    bottom: 0;
+    height: 180px;
+    width: 200px;
+    margin: 30px;
+  }
+
+  .legend-risk2 {
+    display: none;
+    position: absolute;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    opacity: 0.77;
+    z-index: 30000;
+    left: 0;
     bottom: 0;
     height: 180px;
     width: 200px;
@@ -644,7 +672,7 @@ body {
     position: absolute;
     right: 310px;
     left:300px;
-    bottom: 250px;
+    bottom: 230px;
     top: 110px;
     z-index: 2002;
   }
