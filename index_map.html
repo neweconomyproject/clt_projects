@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinatown Marker Check</title>
+    <!-- Include Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Include Leaflet Geocoder CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+</head>
+<body>
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var map = L.map('map').setView([40.7151, -73.9985], 13);
+
+        // Replace this with accurate coordinates for Chinatown NYC
+        var chinatownPolygonCoordinates = [
+            [40.7151, -73.9985],
+            [40.7145, -73.9975],
+            [40.7150, -73.9965],
+            [40.7158, -73.9975],
+        ];
+
+        var chinatownGeoJSON = L.polygon([chinatownPolygonCoordinates]).addTo(map);
+
+        // Add a tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Initialize the Leaflet Geocoder
+        var geocoder = L.Control.geocoder({
+            defaultMarkGeocode: false
+        }).addTo(map);
+
+        // Example: Search for an address and add a marker
+        geocoder.on('markgeocode', function (e) {
+            var marker = L.marker(e.geocode.center).addTo(map);
+
+            // Check if the marker is inside Chinatown
+            if (chinatownGeoJSON.getBounds().contains(marker.getLatLng())) {
+                if (isMarkerInsidePolygon(marker, chinatownGeoJSON)) {
+                    console.log('Marker is located inside Chinatown');
+                    // Do something with the marker
+                } else {
+                    console.log('Marker is located outside Chinatown');
+                }
+            } else {
+                console.log('Marker is located outside Chinatown');
+            }
+        });
+
+        function isMarkerInsidePolygon(marker, poly) {
+            var x = marker.getLatLng().lat, y = marker.getLatLng().lng;
+            var polyPoints = poly.getLatLngs()[0];
+
+            var inside = false;
+
+            for (var i = 0, j = polyPoints.length - 1; i < polyPoints.length; j = i++) {
+                var xi = polyPoints[i].lat, yi = polyPoints[i].lng;
+                var xj = polyPoints[j].lat, yj = polyPoints[j].lng;
+
+                var intersect = ((yi > y) !== (yj > y))
+                    && (x < ((xj - xi) * (y - yi) / (yj - yi) + xi));
+                if (intersect) {
+                    inside = !inside;
+                }
+            }
+
+            return inside;
+        }
+    });
+</script>
+
+</body>
+</html>

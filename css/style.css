@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
 }
@@ -641,12 +643,16 @@ body {
   .dropdown3 a:hover {background-color: #ddd;}
   
   .show {display: block;}
-
-  .map2 {
-    position: absolute;
-    right: 310px;
-    left:300px;
-    bottom: 230px;
-    top: 110px;
-    z-index: 2002;
+  
+  .leaflet-popup-content-wrapper {
+    padding: 10px;
+    text-align: center;
+    background-color: yellow !important;
+    width: 450px;
+    }
+  .popupImage {
+    width: 50vmin; 
+    height: 50vmin;
+    max-width: 200px; 
+    max-height: 200px;
   }

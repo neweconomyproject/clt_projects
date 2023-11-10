@@ -2,296 +2,91 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSS Imports -->
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/leaflet.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-  <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-  <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script> 
-  <style>.leaflet-popup-tip {width: 0px; height: 0px;padding: 0px;}</style>
-  <style>.leaflet-popup-content-wrapper .leaflet-popup-content { font-family: 'Merriweather', serif;}</style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+  
 </head>
 
 <body>
-  <!-- Top Navigation Bar -->
+  
   <div class="topnav">
-    <button class="topbuttonsleft" onclick="showHome()">Guilford County Fire Risk Assessment Tool</button>
+    <button class="topbuttonsleft" onclick="showHome()">NYC Community Land Trusts</button>
     <div class="topnav-right">
-      <button class="topbuttonsright"  onclick="showMarkdown()">Markdown</button>
       <button class="topbuttonsright" onclick="showAbout()">About</button>
     </div>
   </div>
 
-  <!-- Top Navigation Multi Color-->
-  <div class="topnavyellow"  div id="topnavyellow" >
+  <div class="topnavyellow" div id="topnavyellow">
   </div>
 
-  <!-- modal-->
-  <div class="modal"  div id="modal" onclick = "byeModal()">
+  <div class="modal" div id="modal" onclick="byeModal()">
   </div>
 
-  <!-- About-->
-  <div class="about"  div id="about" >
+  <div class="about" div id="about">
   </div>
 
-  <!-- markdown-->
-  <div class="markdown"  div id="markdown" >
+  <div id="map" class="map"></div>
+
+  
+
+  <div class="sidebar" id="sidebar">
+    <p class="sidebar-title">Community Land Trusts</p>
+    <p class="sidebar-subtitle">Search your address to find out which CLT serves you</p>
+    <div id="geocoder-container" class="geocoder-container"></div>
+    <div id="sidebar-content" class="sidebar-content"></div>
+    <!-- Rest of your sidebar content -->
   </div>
 
-  <!-- map-->
-  <div id="map" class="map" ></div>
-
-  <!-- Sidebar -->
-  <div class="sidebar" div id="sidebar">
-  <button class="modal_button" onclick="showModal()">?</button>
-  <!-- District Search-->
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Zoom to :</button>
-    <div id="myDropdown" class="dropdown-content">
-      <input type="text" placeholder="District" id="myInput" onkeyup="filterFunction()">
-      <a href="#Alamance Community" onclick="zoom1()">Alamance Community</a>
-      <a href="#Climax"onclick="zoom2()">Climax</a>
-      <a href="#Colfax"onclick="zoom3()">Colfax</a>
-      <a href="#District13"onclick="zoom4()">District 13</a>
-      <a href="#District28"onclick="zoom5()">District 28</a>
-      <a href="#Gibsonville"onclick="zoom6()">Gibsonville</a>
-      <a href="#Greensboro"onclick="greensboro()">Greensboro</a>
-      <a href="#Guil-Rand"onclick="zoom7()">Guil-Rand</a>
-      <a href="#HighPoint"onclick="zoom8()">High Point</a>
-      <a href="#Julian"onclick="zoom9()">Julian</a>
-      <a href="#Kernersville"onclick="zoom10()">Kernersville</a>
-      <a href="#Kimesville"onclick="zoom11()">Kimesville</a>
-      <a href="#McLeansville"onclick="zoom12()">McLeansville</a>
-      <a href="#MtHope"onclick="zoom13()">Mt. Hope</a>
-      <a href="#NEGuilford"onclick="zoom14()">NE Guilford</a>
-      <a href="#OakRidge"onclick="zoom15()">Oak Ridge</a>
-      <a href="#PiedmontTriadAmbulanceandRescue"onclick="zoom16()">Piedmont Triad Ambulance and Rescue</a>
-      <a href="#PinecroftSedgefield"onclick="zoom17()">Pinecroft-Sedgefield</a>
-      <a href="#PleasantGarden"onclick="zoom18()">Pleasant Garden</a>
-      <a href="#Southeast"onclick="zoom19()">Southeast</a>
-      <a href="#Stokesdale"onclick="zoom20()">Stokesdale</a>
-      <a href="#Summerfield"onclick="zoom21()">Summerfield</a>
-      <a href="#Whitsett"onclick="zoom22()">Whitsett</a>
-    </div>
-  </div>
-  <!-- layers-->
-    <label class="container">Fire Stations:
-      <input type="checkbox" div id = "checked" onclick=" showFireStations()">
-      <span class="checkmark"></span>
-    </label>
-    <label class="container">Predicted Risk:
-      <input type="checkbox" div id = "checked" onclick=" showRiskNet()">
-      <span class="checkmark"></span>
-    </label>
-    <label class="container"> </label>
-    <label class="container">Districts:
-      <input type="checkbox" div id = "checked" onclick=" showFireDistricts()">
-      <span class="checkmark"></span>
-    </label>
-    <!-- district attributes-->
-    <div class="dropdown2">
-      <button onclick="myFunction2()" class="dropbtn2">Filter</button>
-      <div id="myDropdown2" class="dropdown-content2">
-        <input type="text" placeholder="Filter" id="myInput2" onkeyup="filterFunction2()">
-        <a href="#Budget" onclick="Budget()">Budget</a>
-        <a href="#AvgBusy"onclick="AverageBusy()">Average Busy Minutes</a>
-        <a href="#AnnBusy"onclick="AnnualBusy()">Anuual Busy Hours</a>
-        <a href="#TotalStaff"onclick="TotalStaff()">Total Staff</a>
-        <a href="#PerCareer"onclick="PercentCareer()">Percent Career</a>
-      </div>
-    </div>
-    <!-- risk filter-->
-    <div class="dropdown3">
-      <button onclick="myFunction3()" class="dropbtn3">Filter</button>
-      <div id="myDropdown3" class="dropdown-content3">
-        <input type="text" placeholder="Filter" id="myInput3" onkeyup="filterFunction3()">
-        <a href="#Normalize" onclick="Normalize()">Normalize</a>
-      </div>
-    </div>
-
-    <!-- information table-->
-    <div id="table">
-    <table style="width:100%; font-size: 12px; font-family: 'Merriweather', serif;">
-      <tr>
-        <th>Rank</th>
-        <th>Highest</th>
-        <th>   </th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td><span class="high-1">filler</span></td>
-        <td><span class="high1-value">filler</span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><span class="high-2">filler</span></td>
-        <td><span class="high2-value">filler</span></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><span class="high-3">filler</span></td>
-        <td><span class="high3-value">filler</span></td>
-      </tr>
-      <tr>
-        <th></th>
-        <th>Lowest</th>
-        <th>   </th>
-      </tr>
-      <tr>
-        <td>25</td>
-        <td><span class="low-1">filler</span></td>
-        <td><span class="low1-value">filler</span></td>
-      </tr>
-      <tr>
-        <td>26</td>
-        <td><span class="low-2">filler</span></td>
-        <td><span class="low2-value">filler</span></td>
-      </tr>
-      <tr>
-        <td>27</td>
-        <td><span class="low-3">filler</span></td>
-        <td><span class="low3-value">filler</span></td>
-      </tr>
-    </table>
-    </div>
-    <!-- PDF Button-->
-    <div class="buttonbox">
-      <button class= "downloadPDF" id="downloadPDF">Download PDF Report</button>
-    </div>
-  </div>
-
-  <!-- Sidebar Background Color-->
   <div class="sidebarback" div id="sidebarback">
   </div>
-  <!-- Legend Gradient-->
-  <div class="legend-gradient" div id="legend-gradient">
-    <p class="legend-name"> <span class="legend-name"></span></p>
-    <div class="gradient1"></div>
-    <div class="gradient2"></div>
-    <div class="gradient3"></div>
-    <div class="gradient4"></div>
-    <div class="gradient5"></div>
-    <span class="legend-class1">filler</span>
-    <span class="legend-class2">filler</span>
-    <span class="legend-class3">filler</span>
-    <span class="legend-class4">filler</span>
-    <span class="legend-class5">filler</span>
-  </div>
-  <!-- Legend Risk-->
-  <div class="legend-risk" div id="legend-risk">
-    <p class="risk-name"> Risk</p>
-    <div class="risk1"></div>
-    <div class="risk2"></div>
-    <div class="risk3"></div>
-    <span class="legend-risk1">Low</span>
-    <span class="legend-risk2">Medium</span>
-    <span class="legend-risk3">High</span>
-  </div>
-</body>
 
-<!--PDF-->
-<div id="content4" style= " bottom:0px;right:0px;width: 100px;height: 100px; position:absolute;z-index:-1;">
-  <div id="content3" style="position: absolute;right:0px;
-        top:0px;bottom:0px;width: 11in;height: 8.5in;">
-    <div id="content2" style="  position: absolute;
-      background-color: white;
-      z-index: 2000;
-      left: 0px;
-      width: 11in;
-      height: 8.5in;" >
-      <div class="photo" style="position: absolute;">
-      <img class =img src="https://i.postimg.cc/FzZGJqNh/Guilford-County-Fire-Doc.png" style="width: 100%; height: 100%; z-index: 5" />
-      </div>
-        <!-- map-->
-    <div id="map2" class="map2" ></div>
-          <!-- information table-->
-    <div id="table2">
-      <table style="position:absolute; width:100%; font-size: 12px; font-family: 'Merriweather', serif;">
-        <tr>
-          <th>Rank</th>
-          <th>Highest</th>
-          <th>   </th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><span class="high-1">filler</span></td>
-          <td><span class="high1-value">filler</span></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td><span class="high-2">filler</span></td>
-          <td><span class="high2-value">filler</span></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td><span class="high-3">filler</span></td>
-          <td><span class="high3-value">filler</span></td>
-        </tr>
-        <tr>
-          <th></th>
-          <th>Lowest</th>
-          <th>   </th>
-        </tr>
-        <tr>
-          <td>25</td>
-          <td><span class="low-1">filler</span></td>
-          <td><span class="low1-value">filler</span></td>
-        </tr>
-        <tr>
-          <td>26</td>
-          <td><span class="low-2">filler</span></td>
-          <td><span class="low2-value">filler</span></td>
-        </tr>
-        <tr>
-          <td>27</td>
-          <td><span class="low-3">filler</span></td>
-          <td><span class="low3-value">filler</span></td>
-        </tr>
-      </table>
-      </div>
-      </div></div>
-    </div>
+  <div id="geocoded-address" class="geocoded-address"></div>
 
- <!-- Javascript Imports -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="js/jquery-2.2.0.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/fireStations.js"></script>
+  <script src="js/bkLVLup.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  <script src="js/jquery-2.2.0.js"></script>
  <script src="js/underscore.js"></script>
  <script src="js/fireStations.js"></script>
- <script src="js/FireDistricts.js"></script>
+ <script src="js/bkLVLup.js"></script>
+ <script src="js/BronxCLT.js"></script>
+ <script src="js/brownsville.js"></script>
+ <script src="js/centralBK.js"></script>
+ <script src="js/chhaya.js"></script>
+ <script src="js/chinatown.js"></script>
+ <script src="js/cooperSQ.js"></script>
+ <script src="js/EastHarlem.js"></script>
+ <script src="js/EastNY.js"></script>
+ <script src="js/MaryMitchell.js"></script>
+ <script src="js/MottHaven.js"></script>
+ <script src="js/NorthernManhattan.js"></script>
+ <script src="js/northfield.js"></script>
+ <script src="js/ravenswood.js"></script>
+ <script src="js/realE.js"></script>
+ <script src="js/WeStay.js"></script>
+ <script src="js/WesternQueens.js"></script>
  <script src="js/RiskNet.js"></script>
  <script src="js/main.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha256-c9vxcXyAG4paArQG3xk6DjyW/9aHxai2ef9RpMWO44A=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js" crossorigin="anonymous" ></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
+ <script src="https://unpkg.com/leaflet-pip@0.1.0/leaflet-pip.js"></script>
 
+  <!-- Include your other JavaScript imports here -->
+
+  <script>
+
+
+  </script>
+</body>
 </html>
-
-
-<script>
-
-  $('#downloadPDF').click(function () {
-    domtoimage.toPng(document.getElementById('content2'))
-        .then(function (blob) {
-            var pdf = new jsPDF('l', 'pt', 'letter');
-
-            pdf.addImage(blob, 'PNG', 0, 0, $('.img').width(), $('.img').height());
-            pdf.save("test.pdf");
-
-
-        });
-});
-</script>

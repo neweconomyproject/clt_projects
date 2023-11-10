@@ -1,7 +1,6 @@
-
 //load map
 var map = L.map('map', {
-  center: [36.09, -79.885],
+  center: [40.708020, -73.986775],
   zoom: 11,
   zoomControl: false
 });
@@ -19,37 +18,74 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
   ext: 'png'
 }).addTo(map);
 
-//load map2
-var map2 = L.map('map2', {
-  center: [36.09, -79.885],
-  zoom: 11,
-  zoomControl: false
-});
+// Create a geocoding control and add it to the new div in the sidebar
+var geocoderContainer = L.DomUtil.get('geocoder-container');
+var geocoder = L.Control.geocoder({
+  defaultMarkGeocode: false
+}).on('markgeocode', function (e) {
+  // Your existing code for handling the geocode result
+  if (currentMarker) {
+    map.removeLayer(currentMarker);
+  }
+
+  currentMarker = L.marker(e.geocode.center).addTo(map);
+
+  // Check if the marker is touching or intersecting with any GeoJSON layer
+  var touchingGeoJSON = getTouchingGeoJSON(currentMarker);
+
+  if (touchingGeoJSON) {
+    // Print the message in the sidebar
+    var sidebarContent = document.getElementById('sidebar-content');
+    sidebarContent.innerHTML = "Your address is contained within " + touchingGeoJSON;
+  } else {
+    // If not touching any GeoJSON, you can clear the sidebar content
+    var sidebarContent = document.getElementById('sidebar-content');
+    sidebarContent.innerHTML = "";
+  }
+}).addTo(map);
+
+// Function to check if a marker is touching or intersecting with any GeoJSON
+function getTouchingGeoJSON(marker) {
+  // Iterate through each GeoJSON layer
+  for (var geojsonName in geojsonSources) {
+    if (geojsonSources.hasOwnProperty(geojsonName)) {
+      var geojsonLayer = L.geoJSON(geojsonSources[geojsonName]);
+
+      // Check if the marker is touching or intersecting with any of the polygons
+      if (isMarkerTouchingGeoJSON(marker, geojsonLayer)) {
+        return geojsonName; // Return the name of the GeoJSON layer
+      }
+    }
+  }
+
+  return null; // Return null if not touching any GeoJSON
+}
+
+// Function to check if a marker is touching or intersecting with a GeoJSON
+function isMarkerTouchingGeoJSON(marker, geoJSON) {
+  // Check if the marker is touching or intersecting with any of the polygons
+  return geoJSON.getLayers().some(function (polygon) {
+    return polygon.getBounds().contains(marker.getLatLng()) || polygon.getBounds().intersects(marker.getLatLng().toBounds(1));
+  });
+}
+
+// Append the geocoder container to the sidebar
+geocoderContainer.appendChild(geocoder.getContainer());
+
+var currentMarker = null; // To track the currently added marker
 
 
-var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  subdomains: 'abcd',
-  minZoom: 0,
-  maxZoom: 20,
-  ext: 'png'
-}).addTo(map2);
 
-//control maps together
+//control map
 function changeMapState(src,tgt){
   tgt.setZoom(src.getZoom());
   tgt.panTo(src.getCenter());
 }
 
 map.on('moveend', function(e) {
-  changeMapState(map, map2);
+  changeMapState(map);
 
 });
-
-// map2.on('moveend', function(e) {
-//   changeMapState(map2, map);
-// });
-
 
 
 //FIRE STATIONS
@@ -63,34 +99,93 @@ for (var i = 0; i < features.length; i = i + 1 ) {
 
 //add and remove marker functions
 var addToMap = function(){markers.forEach(function(marker){marker.addTo(map)})}
-var addToMap2 = function(){markers2.forEach(function(marker){marker.addTo(map2)})}
 var removeMap = function(){markers.forEach(function(marker){map.removeLayer(marker)})}
-var removeMap2 = function(){markers2.forEach(function(marker){map2.removeLayer(marker)})}
+
+
 
 //create markers
-var markers =[];
-newArray.forEach((element, i) => 
-markers[i] =   L.marker([element[2].coordinates[1], element[2].coordinates[0]],{icon: L.icon({  
- iconUrl: 'images/fire-station.png', iconSize: [25, 25]})}).bindPopup("Name: "+ element[1].Name).addTo(map))
- removeMap()
+// var markers =[];
+// newArray.forEach((element, i) => 
+// markers[i] =   L.marker([element[2].coordinates[1], element[2].coordinates[0]],{icon: L.icon({  
+//  iconUrl: 'images/fire-station.png', iconSize: [25, 25]})}).bindPopup(element[1].Name+"<br>"+element[1].Website.link("https://"+element[1].Website)+"<br>"+element[1].Description+"<br>"+"<img src='" + element[1].Image + "'" + " class=popupImage " + "/>").addTo(map))
+//  removeMap()
 
- var markers2 =[];
- newArray.forEach((element, i) => 
- markers2[i] =   L.marker([element[2].coordinates[1], element[2].coordinates[0]],{icon: L.icon({  
-  iconUrl: 'images/fire-station.png', iconSize: [25, 25]})}).bindPopup("Name: "+ element[1].Name).addTo(map2))
-  removeMap2()
- 
+var geojsonSources = {
+   "bkLVLup": bkLVLup,
+   "BronxCLT": BronxCLT,
+   "brownsville": brownsville,
+   "centralBK": centralBK,
+   "chhaya": chhaya,
+  "chinatown": chinatown,
+  "cooperSQ": cooperSQ,
+   "EastHarlem": EastHarlem,
+   "EastNY": EastNY,
+   "MaryMitchell": MaryMitchell,
+   "MottHaven": MottHaven,
+  //"NorthernManhattan": NorthernManhattan,
+   "northfield": northfield,
+   "ravenswood": ravenswood,
+  "realE": realE,
+   "WeStay": WeStay,
+  "WesternQueens": WesternQueens,
+};
+
+var markers = [];
+var currentGeoJSONLayer = null; // To track the currently displayed GeoJSON layer
+
+var sidebarContent = document.getElementById('sidebar-content');
+
+
+newArray.forEach((element, i) => {
+    var marker = L.marker([element[2].coordinates[1], element[2].coordinates[0]], {
+        icon: L.icon({
+            iconUrl: 'images/fire-station.png',
+            iconSize: [25, 25]
+        })
+    }).bindPopup(element[1].Name + "<br>" + element[1].Website.link("https://" + element[1].Website) + "<br>" + element[1].Description + "<br>" + "<img src='" + element[1].Image + "'" + " class=popupImage " + "/").addTo(map);
+
+    // Add a click event to load and display the GeoJSON when the marker is clicked
+    marker.on('click', function () {
+      // Clear previous content in the sidebar
+      sidebarContent.innerHTML = "";
+
+      // Add information to the sidebar
+      var content = "<strong>Name:</strong> " + element[1].Name + "<br>" +
+          "<strong>Website:</strong> <a href='https://" + element[1].Website + "' target='_blank'>" + element[1].Website + "</a><br>" +
+          "<strong>Description:</strong> " + element[1].Description + "<br>" +
+          "<strong>Image:</strong> <img src='" + element[1].Image + "' class='popupImage' />";
+
+      sidebarContent.innerHTML = content;
+
+      // Optionally, you can add code to handle GeoJSON layers here if needed
+        var geojsonName = element[1].Catchment;
+        if (geojsonName && geojsonSources.hasOwnProperty(geojsonName)) {
+            if (currentGeoJSONLayer) {
+                map.removeLayer(currentGeoJSONLayer); // Remove the currently displayed GeoJSON layer
+            }
+            currentGeoJSONLayer = L.geoJSON(geojsonSources[geojsonName]).addTo(map);
+        }
+    });
+
+    markers.push(marker);
+});
+
+
+
 
 // hide and show fire station markers
-function showFireStations() {
-if(map.hasLayer(markers[0])==true){
-  removeMap()
-  removeMap2()
-}
-else{
-  addToMap()
-  addToMap2()
-}}
+// function showFireStations() {
+// if(map.hasLayer(markers[0])==true){
+//   removeMap()
+// }
+// else{
+//   addToMap()
+// }}
+
+addToMap()
+
+
+
 
 
 //FIRE DISTRICTS
@@ -167,427 +262,6 @@ else{
 }
 }
 
-//BUDGET
-function getColorBUDGET(d) {
- return d > 1500000 ? '#922b26' :
-        d > 1000000  ? '#A85551' :
-        d > 500000  ? '#BE807D' :
-        d > 250000  ? '#D3AAA8' :
-        d > 0   ? '#E9D5D4' :
-          '#d3d3d3';
-      }
-
-function styleBUDGET(feature) {
-          return {
-          fillColor: getColorBUDGET(feature.properties.Budget),
-            weight: .6,
-            opacity: 1,
-            color: 'white',
-            fillOpacity: 0.7
-        };
-      }
-
-function Budget() {
-  if(map.hasLayer(FireDistrictsLayer)==true){
-    map.removeLayer(FireDistrictsLayer)
-    FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleBUDGET,
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget);
-      }
-    });
-    map.addLayer(FireDistrictsLayer)
-    $('.legend-name').text("Budget")
-    $('.legend-class1').text("$0 - $250,000")
-    $('.legend-class2').text("$250,001 - $500,000")
-    $('.legend-class3').text("$500,001 - $1MM")
-    $('.legend-class4').text("$1MM - $1.5MM")
-    $('.legend-class5').text(">$1.5MM")
-    y = document.getElementById("legend-risk");
-    y.style.display = 'none';
-     x = document.getElementById("legend-gradient");
-    x.style.display = 'block';
-    $('.high-1').text("Summerfield")
-    $('.high-2').text("Pinecroft-Sedgefield")
-    $('.high-3').text("Oak Ridge")
-    $('.low-1').text("Gibsonville")
-    $('.low-2').text("Julian")
-    $('.low-3').text("Kimesville")
-    $('.high1-value').text("3271099")
-    $('.high2-value').text("2534542")
-    $('.high3-value').text("1820565")
-    $('.low1-value').text("125996")
-    $('.low2-value').text("107249")
-    $('.low3-value').text("14481")
-    x = document.getElementById("table");
-    x.style.display = 'block';
-    x2 = document.getElementById("table2");
-    x2.style.display = 'block';
-  }
-  if(map2.hasLayer(FireDistrictsLayer2)==true){
-    map2.removeLayer(FireDistrictsLayer2)
-    FireDistrictsLayer2= L.geoJSON(FireDistricts, {style: styleBUDGET,
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Budget: '+feature.properties.Budget);
-      }
-    });
-    map2.addLayer(FireDistrictsLayer2)
-  }}
-
-
-//AVERAGE BUSY MINUTE
-function getColorABM(d) {
- return d > 35 ? '#922b26' :
-        d > 30  ? '#A85551' :
-        d > 25  ? '#BE807D' :
-        d > 20  ? '#D3AAA8' :
-        d > 0   ? '#E9D5D4' :
-          '#d3d3d3';
-      }
-
-function styleABM(feature) {
-          return {
-          fillColor: getColorABM(feature.properties.AvgBusyMin),
-            weight: .6,
-            opacity: 1,
-            color: 'white',
-            fillOpacity: 0.7
-        };
-      }
-
-function AverageBusy() {
-  if(map.hasLayer(FireDistrictsLayer)==true){
-    map.removeLayer(FireDistrictsLayer)
-    FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleABM,
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Average Busy Minutes: '+feature.properties.AvgBusyMin);
-      }
-    });
-    map.addLayer(FireDistrictsLayer)
-    $('.legend-name').text("Average Busy Minutes")
-    $('.legend-class1').text("0 - 20")
-    $('.legend-class2').text("21 - 25")
-    $('.legend-class3').text("26 - 30")
-    $('.legend-class4').text("31 - 35")
-    $('.legend-class5').text(">36")
-    y = document.getElementById("legend-risk");
-    y.style.display = 'none';
-     x = document.getElementById("legend-gradient");
-    x.style.display = 'block';
-    $('.high-1').text("NE Guilford")
-    $('.high-2').text("Julian")
-    $('.high-3').text("Piedmont Triad Ambulance and Rescue")
-    $('.low-1').text("Gibsonville")
-    $('.low-2').text("Greensboro")
-    $('.low-3').text("Kernersville ")
-    $('.high1-value').text("51.9")
-    $('.high2-value').text("46.6")
-    $('.high3-value').text("36.4")
-    $('.low1-value').text("19.5")
-    $('.low2-value').text("17.9")
-    $('.low3-value').text("11.9")
-    x = document.getElementById("table");
-    x.style.display = 'block';
-    x2 = document.getElementById("table2");
-    x2.style.display = 'block';
-  }
-  if(map2.hasLayer(FireDistrictsLayer2)==true){
-    map2.removeLayer(FireDistrictsLayer2)
-    FireDistrictsLayer2= L.geoJSON(FireDistricts, {style: styleABM,
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Average Busy Minutes: '+feature.properties.AvgBusyMin);
-      }
-    });
-    map2.addLayer(FireDistrictsLayer2)
-  }}
-
-  //ANNUAL BUSY HOUR
-function getColorABH(d) {
-  return d > 35 ? '#922b26' :
-         d > 30  ? '#A85551' :
-         d > 25  ? '#BE807D' :
-         d > 20  ? '#D3AAA8' :
-         d > 0   ? '#E9D5D4' :
-           '#d3d3d3';
-       }
- 
- function styleABH(feature) {
-           return {
-           fillColor: getColorABH(feature.properties.AvgBusyMin),
-             weight: .6,
-             opacity: 1,
-             color: 'white',
-             fillOpacity: 0.7
-         };
-       }
- 
- function AnnualBusy() {
-   if(map.hasLayer(FireDistrictsLayer)==true){
-     map.removeLayer(FireDistrictsLayer)
-     FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleABH,
-       onEachFeature: function (feature, layer) {
-         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Annual Busy Hours: '+feature.properties.AnBusyHour);
-       }
-     });
-     map.addLayer(FireDistrictsLayer)
-     $('.legend-name').text("Annual Busy Hours")
-     $('.legend-class1').text("0 - 75")
-     $('.legend-class2').text("76 - 175")
-     $('.legend-class3').text("176 - 300")
-     $('.legend-class4').text("301 - 500")
-     $('.legend-class5').text(">501")
-     y = document.getElementById("legend-risk");
-     y.style.display = 'none';
-      x = document.getElementById("legend-gradient");
-     x.style.display = 'block';
-     $('.high-1').text("Greensboro")
-     $('.high-2').text("Pinecroft-Sedgefield")
-     $('.high-3').text("NE Guilford")
-     $('.low-1').text("Kimesville")
-     $('.low-2').text("Piedmont Triad")
-     $('.low-3').text("Kernersville")
-     $('.high1-value').text("5700")
-     $('.high2-value').text("1232")
-     $('.high3-value').text("1027")
-     $('.low1-value').text("56")
-     $('.low2-value').text("28")
-     $('.low3-value').text("16")
-     x = document.getElementById("table");
-     x.style.display = 'block';
-     x2 = document.getElementById("table2");
-     x2.style.display = 'block';
-   }
-   if(map2.hasLayer(FireDistrictsLayer2)==true){
-    map2.removeLayer(FireDistrictsLayer2)
-     FireDistrictsLayer2= L.geoJSON(FireDistricts, {style: styleABH,
-       onEachFeature: function (feature, layer) {
-         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Annual Busy Hours: '+feature.properties.AnBusyHour);
-       }
-     });
-     map2.addLayer(FireDistrictsLayer2)
-   }}
-
- //TOTAL STAFF
- function getColorTS(d) {
-  return d > 50 ? '#922b26' :
-         d > 45  ? '#A85551' :
-         d > 40  ? '#BE807D' :
-         d > 35  ? '#D3AAA8' :
-         d > 0   ? '#E9D5D4' :
-           '#d3d3d3';
-       }
- 
- function styleTS(feature) {
-           return {
-           fillColor: getColorTS(feature.properties.TotStaff),
-             weight: .6,
-             opacity: 1,
-             color: 'white',
-             fillOpacity: 0.7
-         };
-       }
- 
- function TotalStaff() {
-   if(map.hasLayer(FireDistrictsLayer)==true){
-     map.removeLayer(FireDistrictsLayer)
-     FireDistrictsLayer= L.geoJSON(FireDistricts, {style: styleTS,
-       onEachFeature: function (feature, layer) {
-         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Total Staff: '+feature.properties.TotStaff);
-       }
-     });
-     map.addLayer(FireDistrictsLayer)
-     $('.legend-name').text("Total Staff")
-     $('.legend-class1').text("0 - 35")
-     $('.legend-class2').text("36 - 40")
-     $('.legend-class3').text("41 - 45")
-     $('.legend-class4').text("46 - 50")
-     $('.legend-class5').text(">51")
-     y = document.getElementById("legend-risk");
-     y.style.display = 'none';
-      x = document.getElementById("legend-gradient");
-     x.style.display = 'block';
-     $('.high-1').text("Greensboro")
-     $('.high-2').text("High Point")
-     $('.high-3').text("Guil-Rand")
-     $('.low-1').text("Gibsonville")
-     $('.low-2').text("Southeast")
-     $('.low-3').text("Kimesville")
-     $('.high1-value').text("576")
-     $('.high2-value').text("234")
-     $('.high3-value').text("114")
-     $('.low1-value').text("29")
-     $('.low2-value').text("27")
-     $('.low3-value').text("27")
-     x = document.getElementById("table");
-     x.style.display = 'block';
-     x2 = document.getElementById("table2");
-     x2.style.display = 'block';
-   }
-   if(map2.hasLayer(FireDistrictsLayer2)==true){
-    map2.removeLayer(FireDistrictsLayer2)
-    FireDistrictsLayer2= L.geoJSON(FireDistricts, {style: styleTS,
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Total Staff: '+feature.properties.TotStaff);
-      }
-    });
-    map2.addLayer(FireDistrictsLayer2)
-  }
-  }
-
-
-//PERCAREER
-function getColorPC(d) {
-  return d > 50 ? '#922b26' :
-         d > 30  ? '#A85551' :
-         d > 20  ? '#BE807D' :
-         d > 5  ? '#D3AAA8' :
-         d > 0   ? '#E9D5D4' :
-           '#d3d3d3';
-       }
- 
- function stylePC(feature) {
-           return {
-           fillColor: getColorPC(feature.properties.PerCareer),
-             weight: .6,
-             opacity: 1,
-             color: 'white',
-             fillOpacity: 0.7
-         };
-       }
- 
- function PercentCareer() {
-   if(map.hasLayer(FireDistrictsLayer)==true){
-     map.removeLayer(FireDistrictsLayer)
-     FireDistrictsLayer= L.geoJSON(FireDistricts, {style: stylePC,
-       onEachFeature: function (feature, layer) {
-         layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Percent Career Staff: '+feature.properties.PerCareer);
-       }
-     });
-     map.addLayer(FireDistrictsLayer)
-     $('.legend-name').text("Percent Career")
-     $('.legend-class1').text("0 - 5")
-     $('.legend-class2').text("6 - 20")
-     $('.legend-class3').text("21 - 30")
-     $('.legend-class4').text("31 - 50")
-     $('.legend-class5').text(">51")
-     y = document.getElementById("legend-risk");
-     y.style.display = 'none';
-      x = document.getElementById("legend-gradient");
-     x.style.display = 'block';
-     $('.high-1').text("Greensboro")
-     $('.high-2').text("High Point")
-     $('.high-3').text("Kernersville")
-     $('.low-1').text("Julian")
-     $('.low-2').text("Southeast")
-     $('.low-3').text("Kimesville")
-     $('.high1-value').text("100")
-     $('.high2-value').text("100")
-     $('.high3-value').text("100")
-     $('.low1-value').text("0")
-     $('.low2-value').text("0")
-     $('.low3-value').text("0")
-     x = document.getElementById("table");
-     x.style.display = 'block';
-     x2 = document.getElementById("table2");
-     x2.style.display = 'block';
-   }
-   if(map2.hasLayer(FireDistrictsLayer2)==true){
-    map2.removeLayer(FireDistrictsLayer2)
-    FireDistrictsLayer2= L.geoJSON(FireDistricts, {style: stylePC,
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup('District:'+feature.properties.DistName+"<br>"+'Percent Career Staff: '+feature.properties.PerCareer);
-      }
-    });
-    map2.addLayer(FireDistrictsLayer2)
-  }}
-
- 
-
-//RISK NET
-//hide and show risk net
-
-
-// set color palette risk surface
-function getColor(d) {
-  return d > 4.14 ? '#922B26' :
-         d > 1.19  ? '#B97527' :
-         d > 0  ? '#E0BE28' :
-                    '#FFEDA0';
-}
-
-function style(feature) {
-  return {
-      fillColor: getColor(feature.properties.pred),
-      weight: .6,
-      opacity: 1,
-      color: 'white',
-      fillOpacity: 0.7
-  };
-}
-
-//map RiskNet
-var RiskNetLayer=L.geoJson(RiskNet, {style: style});
-var RiskNetLayer2=L.geoJson(RiskNet, {style: style});
-
-// RiskNet.setStyle({color: "#f94144"});
-function showRiskNet() {
-if(map.hasLayer(RiskNetLayer)==true){
-  map.removeLayer(RiskNetLayer)
-  z = document.getElementById("legend-risk");
-  z.style.display = 'none';
-}
-else{
-  x = document.getElementById("legend-gradient");
-  x.style.display = 'none';
-  y = document.getElementById("legend-risk");
-  y.style.display = 'block';
-  RiskNetLayer=L.geoJson(RiskNet, {style: style});
-  map.addLayer(RiskNetLayer)
-}
-if(map2.hasLayer(RiskNetLayer2)==true){
-  map2.removeLayer(RiskNetLayer2);
-}
-else{
-  RiskNetLayer2=L.geoJson(RiskNet, {style: style});
-  map2.addLayer(RiskNetLayer2)
-}
-}
-
-//NORMALIZED RISK
-
-// set color palette risk surface
-function getColorNR(d) {
-  return d > 4.14 ? '#922B26' :
-         d > 1.19  ? '#B97527' :
-         d > 0  ? '#E0BE28' :
-                    '#FFEDA0';
-}
-
-//style function risk surface
-function styleNR(feature) {
-  return {
-      fillColor: getColorNR(feature.properties.normalized),
-      weight: .6,
-      opacity: 1,
-      color: 'white',
-      fillOpacity: 0.7
-  };
-}
-
- function Normalize() {
-   if(map.hasLayer(RiskNetLayer)==true){
-     map.removeLayer(RiskNetLayer)
-     RiskNetLayer= L.geoJSON(RiskNet, {style: styleNR});
-     map.addLayer(RiskNetLayer)
-     x = document.getElementById("legend-gradient");
-     y = document.getElementById("legend-risk");
-     x.style.display = 'none';
-     y.style.display = 'block';
-   }
-   if(map2.hasLayer(RiskNetLayer2)==true){
-    map2.removeLayer(RiskNetLayer2)
-    RiskNetLayer2= L.geoJSON(RiskNet, {style: styleNR});
-    map2.addLayer(RiskNetLayer2);
-  }}
 
 //show about page 
 function showAbout() {
@@ -609,16 +283,6 @@ function showHome() {
 
 }
 
-//show markdown page
-function showMarkdown() {
-  var x = document.getElementById("markdown");
-  var y = document.getElementById("about");
-  y.style.display ="none";
-  if(x.style.display == 'block')
-  x.style.display = 'none';
-  else
-  x.style.display = 'block';
-  }
 
 //show and get rid of modal page
 function showModal() {
@@ -638,41 +302,6 @@ function byeModal() {
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
-
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
-
-function filterFunction2() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput2");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown2");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
-
-
-
 
 function zoom1() {
   $('.district-name').text("Alamance Community")
@@ -813,32 +442,5 @@ function greensboro(){
   zoom =12
   map.flyTo([36.087231, -79.833755],zoom);
   map2.flyTo([36.087231, -79.833755],zoom);
-}
-
-//filter
-function myFunction2() {
-  document.getElementById("myDropdown2").classList.toggle("show");
-}
-
-
-//filter
-function filterFunction3() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput3");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown3");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
-
-function myFunction3() {
-  document.getElementById("myDropdown3").classList.toggle("show");
 }
 
