@@ -1,100 +1,23 @@
-
-
+@import url(https://db.onlinewebfonts.com/c/aa0db18808f131f9ace744ef97cb54f7?family=Knockout-HTF48-Featherweight);
 body {
   margin: 0;
 }
-
-.district-name {
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.legend-name{
-  position:absolute;
-  left: 20px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.legend-class1{
-  position:absolute;
-  left: 55px;
-  top:52px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.legend-class2{
-  position:absolute;
-  left: 55px;
-  top:92px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.legend-class3{
-  position:absolute;
-  left: 55px;
-  top:132px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.legend-class4{
-  position:absolute;
-  left: 55px;
-  top:172px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.legend-class5{
-  position:absolute;
-  left: 55px;
-  top:212px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-
-#results{
-  position: absolute;
-  top: 360px;
-  left:25px;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;400&display=swap');
 .topnav {
   overflow: hidden;
-  background-color: #922b26;
+  background-color: #000000 ;
   z-index: 100;
   position: absolute;
-  left:0px;
-  right:0px;
-  top:0px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
 }
 
-.topnavyellow{
-  position: absolute;
-  top: 0px;
-  right:0px;
-  left:0px;
-  background-color:#e0be28;
-  z-index:11;
-  height: 50px;
-}
 
 .topnav a {
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
+  font-family: 'Knockout-HTF48-Featherweight'; 
   float: left;
-  color: #f2f2f2;
+  color: #ffcb07;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -103,85 +26,52 @@ body {
 
 .topbuttonsleft {
   transition-duration: 0.4s;
-  font-weight: bold;
-  font-family: 'Merriweather', serif;
-  padding:8px;
-  color:white;
-  font-size: 20px;
-  background:none;
+  font-family: 'Knockout-HTF48-Featherweight'; 
+  padding: 10px;
+  padding-left:30px;
+  font-weight: bolder;
+  color: #ffcb07;
+  font-size: 30px;
+  background: none;
   border: none;
-}
-
-.topbuttonsright {
-  transition-duration: 0.4s;
-  font-family:  'Merriweather', serif;
-  padding-left:8px;
-  padding-right:8px;
-  padding-top:10px;
-  color:white;
-  font-size: 14px;
-  background:none;
-  border: none;
-}
-
-.topbuttonsright:hover {
-  cursor: pointer;
 }
 
 .topbuttonsleft:hover {
   cursor: pointer;
 }
-
-.topnav-right {
-  float: right;
+.sidebar-title {
+  padding-left: 15px;
+  font-family: 'Source Sans 3', sans-serif; 
+  font-size: 20px; 
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.about{
-  display: none;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right:0px;
-  left:0px;
-  background-color:white;
-  z-index:10;
+.sidebar-subtitle {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px; 
+  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif; 
 }
 
-.modal{
-  display: none;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right:0px;
-  left:0px;
-  z-index:300;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-.modal_button{
-  position:absolute;
-  right:15px;
-}
-
-
-.markdown{
-  display: none;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right:0px;
-  left:0px;
-  z-index:10;
-  background-color: blue;
+.geocoder-container {
+  padding-left: 15px;
+  margin-top: 15px; 
 }
 
 .map {
   position: absolute;
   right: 0px;
-  left:0px;
+  left: 0px;
   bottom: 0px;
   top: 50px;
   z-index: 7;
+}
+
+.custom-marker {
+  background-color: gray;
+  border-radius: 50%;
 }
 
 .sidebar {
@@ -194,8 +84,14 @@ body {
   overflow-y: auto;
   padding: 15px;
   font-size: 16px;
-  z-index:9;
-  padding:10px;
+  z-index: 9;
+  padding: 10px;
+  font-family: 'Source Sans 3', sans-serif; 
+}
+
+.response-message {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .sidebarback {
@@ -210,449 +106,58 @@ body {
   font-size: 16px;
   background-color: #e3e3e3;
   opacity: 0.77;
-  z-index:8;
+  z-index: 8;
 }
 
+.sidebar-info {
+  text-align: left;
+  margin-top: 20px; 
+}
 
-.myCheckRisk{
-  font-size: 16px;
-  font-family: 'Merriweather', serif;
+.sidebar-name {
+  font-size: 18px;
   font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 20px; 
+  font-family: 'Source Sans 3', sans-serif; 
 }
 
-.container {
-  top:65px;
-  display: block;
-  position: relative;
-  padding-left: 25px;
-  padding-top: 25px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkmark {
-  position: absolute;
-  top: 24px;
-  right: 180px;
-  height: 22px;
-  width: 22px;
-  background-color: #eee;
-}
-
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-.container input:checked ~ .checkmark {
-  background-color: #922b26;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.dropbtn {
-  background-color: #922b26;
-  color: white;
-  padding: 12px;
-  font-size: 16px;
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #922b26;
-}
-
-#myInput {
-  box-sizing: border-box;
-  background-image: url('images/magnifying-glass-search.png');
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  font-family: 'Merriweather', serif;
-  padding: 14px 10px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#myInput:focus {outline: 3px solid #ddd;}
-
-.dropdown {
-  position: absolute;
-  display: block;
-  z-index: 18;
-  top:20px;
-  left:20px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  font-family: 'Merriweather', serif;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-
-
-.dropbtn2 {
-  background-color: gray;
-  color: white;
-  padding: 12px;
+.sidebar-website {
   font-size: 12px;
-  font-family: 'Merriweather', serif;
-  border: none;
-  cursor: pointer;
-}
-.dropbtn2:hover, .dropbtn2:focus {
-  background-color: gray;
-}
-
-#myInput2 {
-  box-sizing: border-box;
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  font-family: 'Merriweather', serif;
-  padding: 14px 10px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#myInput2:focus {outline: 3px solid #ddd;}
-
-.dropdown2 {
-  position: absolute;
-  display: block;
-  z-index: 11;
-  top:285px;
-  left:40px;
-}
-
-.dropdown-content2 {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  font-family: 'Merriweather', serif;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
-}
-
-.dropdown-content2 a {
-  color: black;
-  padding: 12px 16px;
+  color: #0066cc; 
   text-decoration: none;
   display: block;
+  margin-bottom: 10px;
+  font-family: 'Source Sans 3', sans-serif; 
 }
 
-.dropdown2 a:hover {background-color: #ddd;}
+.sidebar-website:hover {
+  text-decoration: underline;
+}
 
-.show {display: block;}
+.sidebar-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-family: 'Source Sans 3', sans-serif; 
+}
 
-
-
-.legend-gradient {
-  display: none;
-  position: absolute;
-  background-color: #e3e3e3;
+.sidebar-image {
+  max-width: 100%; /* Ensure images don't stretch beyond their original size */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 5px;
-  opacity: 0.77;
-  z-index: 9;
-  right: 0;
-  bottom: 0;
-  height: 260px;
-  width: 200px;
-  margin: 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-
-.gradient1 {
-  position: absolute;
-  background-color: #E9D5D4;
-  z-index: 2100;
-  height: 20px;
-  width: 20px;
-  margin: 20px;
-  text-indent: 30px;
-  top:30px;
+#sidebar-content {
+  margin-top: 50px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Source Sans 3', sans-serif; 
+  padding-left: 15px;
+  padding-right:15px;
 }
 
-.gradient2 {
-  position: absolute;
-  background-color: #D3AAA8;
-  z-index: 2100;
-  height: 20px;
-  width: 20px;
-  margin: 20px;
-  text-indent: 30px;
-  top:70px;
-}
-.gradient3 {
-  position: absolute;
-  background-color: #BE807D;
-  z-index: 2100;
-  height: 20px;
-  width: 20px;
-  margin: 20px;
-  text-indent: 30px;
-  top:110px;
-}
-.gradient4 {
-  position: absolute;
-  background-color: #A85551;
-  z-index: 2100;
-  height: 20px;
-  width: 20px;
-  margin: 20px;
-  text-indent: 30px;
-  top:150px;
-}
-.gradient5 {
-  position: absolute;
-  background-color:#922b26;
-  z-index: 2100;
-  height: 20px;
-  width: 20px;
-  margin: 20px;
-  text-indent: 30px;
-  top:190px;
+.show {
+  display: block;
 }
 
-.downloadPDF{
-    background-color: white;
-    color: #922b26;
-    padding: 12px;
-    font-size: 14px;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    left:20px; 
-    top:580px;
-    position:absolute;
-  }
-
-
-  #table{
-    display: none;
-    font-size: 14px;
-    font-family: 'Merriweather', serif;
-    left:20px; 
-    top:420px;
-    width: 300px;
-    position:absolute;
-  }
-
-  #table2{
-    display: none;
-    font-size: 14px;
-    left:60px; 
-    top:160px; 
-    width: 200px;
-    font-family: 'Merriweather', serif;
-    position:absolute;
-    z-index:2001;
-  }
-
-
-  .legend-risk {
-    display: none;
-    position: absolute;
-    background-color: #e3e3e3;
-    border-radius: 5px;
-    opacity: 0.77;
-    z-index: 9;
-    right: 0;
-    bottom: 0;
-    height: 180px;
-    width: 200px;
-    margin: 30px;
-  }
-
-
-  .risk-name {
-    font-size: 16px;
-    font-family: 'Merriweather', serif; 
-    font-weight: bold; 
-    position: absolute;
-    left:15px; 
-  }
-
-  .risk1 {
-    position: absolute;
-    background-color: #E0BE28;
-    z-index: 2100;
-    height: 20px;
-    width: 20px;
-    margin: 20px;
-    text-indent: 30px;
-    top:30px;
-  }
-  
-  .risk2 {
-    position: absolute;
-    background-color: #B97527;
-    z-index: 2100;
-    height: 20px;
-    width: 20px;
-    margin: 20px;
-    text-indent: 30px;
-    top:70px;
-  }
-  .risk3 {
-    position: absolute;
-    background-color: #922B26;
-    z-index: 2100;
-    height: 20px;
-    width: 20px;
-    margin: 20px;
-    text-indent: 30px;
-    top:110px;
-  }
-
-  .legend-risk1{
-    position:absolute;
-    left: 55px;
-    top:52px;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  
-  .legend-risk2{
-    position:absolute;
-    left: 55px;
-    top:92px;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  
-  .legend-risk3{
-    position:absolute;
-    left: 55px;
-    top:132px;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-    font-size: 12px;
-  }
-
-
-  .dropbtn3 {
-    background-color: gray;
-    color: white;
-    padding: 12px;
-    font-size: 12px;
-    font-family: 'Merriweather', serif;
-    border: none;
-    cursor: pointer;
-  }
-  .dropbtn3:hover, .dropbtn3:focus {
-    background-color: gray;
-  }
-  
-  #myInput3 {
-    box-sizing: border-box;
-    background-position: 14px 12px;
-    background-repeat: no-repeat;
-    font-size: 16px;
-    font-family: 'Merriweather', serif;
-    padding: 14px 10px 12px 45px;
-    border: none;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  #myInput3:focus {outline: 3px solid #ddd;}
-  
-  .dropdown3 {
-    position: absolute;
-    display: block;
-    z-index: 11;
-    top:190px;
-    left:40px;
-  }
-  
-  .dropdown-content3 {
-    display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    font-family: 'Merriweather', serif;
-    min-width: 230px;
-    overflow: auto;
-    border: 1px solid #ddd;
-    z-index: 1;
-  }
-  
-  .dropdown-content3 a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown3 a:hover {background-color: #ddd;}
-  
-  .show {display: block;}
-  
-  .leaflet-popup-content-wrapper {
-    padding: 10px;
-    text-align: center;
-    background-color: yellow !important;
-    width: 450px;
-    }
-  .popupImage {
-    width: 50vmin; 
-    height: 50vmin;
-    max-width: 200px; 
-    max-height: 200px;
-  }

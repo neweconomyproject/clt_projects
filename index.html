@@ -8,37 +8,31 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
-  
+
 </head>
+
+<script>
+  // Define the redirectToNewEconomy function
+  function redirectToNewEconomy() {
+      // Redirect to the specified website
+      window.location.href = "https://www.neweconomynyc.org/type/maps/";
+  }
+</script>
 
 <body>
   
   <div class="topnav">
-    <button class="topbuttonsleft" onclick="showHome()">NYC Community Land Trusts</button>
-    <div class="topnav-right">
-      <button class="topbuttonsright" onclick="showAbout()">About</button>
-    </div>
-  </div>
-
-  <div class="topnavyellow" div id="topnavyellow">
-  </div>
-
-  <div class="modal" div id="modal" onclick="byeModal()">
-  </div>
-
-  <div class="about" div id="about">
+    <button class="topbuttonsleft" onclick="redirectToNewEconomy()">New Economy Project</button>
   </div>
 
   <div id="map" class="map"></div>
 
-  
 
   <div class="sidebar" id="sidebar">
     <p class="sidebar-title">Community Land Trusts</p>
-    <p class="sidebar-subtitle">Search your address to find out which CLT serves you</p>
+    <p class="sidebar-subtitle">Explore New York City's CLTs by clicking on the points on the map or search your address to find out which CLT serves you. Each CLT's catchment area is shown in gray and its properties are in yellow.</p>
     <div id="geocoder-container" class="geocoder-container"></div>
     <div id="sidebar-content" class="sidebar-content"></div>
-    <!-- Rest of your sidebar content -->
   </div>
 
   <div class="sidebarback" div id="sidebarback">
@@ -50,21 +44,21 @@
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <script src="js/jquery-2.2.0.js"></script>
   <script src="js/underscore.js"></script>
-  <script src="js/fireStations.js"></script>
-  <script src="js/bkLVLup.js"></script>
   <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  <script src="js/jquery-2.2.0.js"></script>
  <script src="js/underscore.js"></script>
- <script src="js/fireStations.js"></script>
+ <script src="js/CLT.js"></script>
  <script src="js/bkLVLup.js"></script>
  <script src="js/BronxCLT.js"></script>
+ <script src="js/BronxCLT2.js"></script>
  <script src="js/brownsville.js"></script>
  <script src="js/centralBK.js"></script>
  <script src="js/chhaya.js"></script>
  <script src="js/chinatown.js"></script>
  <script src="js/cooperSQ.js"></script>
  <script src="js/EastHarlem.js"></script>
+ <script src="js/EastHarlem2.js"></script>
  <script src="js/EastNY.js"></script>
  <script src="js/MaryMitchell.js"></script>
  <script src="js/MottHaven.js"></script>
@@ -74,15 +68,13 @@
  <script src="js/realE.js"></script>
  <script src="js/WeStay.js"></script>
  <script src="js/WesternQueens.js"></script>
- <script src="js/RiskNet.js"></script>
+ <script src="js/WesternQueens2.js"></script>
  <script src="js/main.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha256-c9vxcXyAG4paArQG3xk6DjyW/9aHxai2ef9RpMWO44A=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js" crossorigin="anonymous" ></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/leaflet-pip@0.1.0/leaflet-pip.js"></script>
-
-  <!-- Include your other JavaScript imports here -->
 
   <script>
 
