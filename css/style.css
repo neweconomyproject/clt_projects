@@ -13,24 +13,34 @@ body {
   top: 0px;
 }
 
-@media only screen and (max-width: 768px) {
-  /* Styles for screens smaller than 768px (e.g., mobile devices) */
-  .topbuttonsleft {
-    padding-left: 15px;
-    font-size: 20px;
+@media (max-width: 767px) {
+  .topnav {
+    position: static;
+    width: 100%;
   }
-  .topnav a {
-    font-size: 12px;
-    padding: 10px;
-  }
+
   .map {
-    top: 30px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 100px; /* Adjust the top margin based on your design */
+    z-index: 7;
   }
-  .sidebar,
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    margin-top: 15px; /* Adjust the top margin based on your design */
+    border-radius: 0; /* Remove border-radius for full width */
+    padding: 10px; /* Adjust padding based on your design */
+  }
+
   .sidebarback {
-    left: 10px;
-    width: calc(100% - 20px);
+    display: none; /* Hide the background on mobile */
   }
+  
+  /* Add any additional mobile-specific styles here */
 }
 .topnav a {
   font-family: 'Knockout-HTF48-Featherweight'; 
