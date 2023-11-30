@@ -26,17 +26,15 @@ body {
     left: 0;
     bottom: 0;
     top: 50px; /* Adjust the top margin based on your design */
-    z-index: 7;
+    z-index: 1; /* Lower the z-index to ensure map is displayed above */
   }
 
   .sidebar {
     position: absolute;
     left: 0;
     width: 100%;
-    margin-top: 15px; /* Adjust the top margin based on your design */
-    border-radius: 0; /* Remove border-radius for full width */
-    padding: 10px; /* Adjust padding based on your design */
-    z-index: 9;
+    margin-top: 50px; /* Adjust the top margin based on your design */
+    height: calc(100vh - 50px); /* Adjust the height to leave space for the map */
     background-color: #fff; /* Adjust background color based on your design */
   }
 
@@ -63,6 +61,7 @@ body {
   
   /* Add any additional mobile-specific styles here */
 }
+
 .topnav a {
   font-family: 'Knockout-HTF48-Featherweight'; 
   float: left;
