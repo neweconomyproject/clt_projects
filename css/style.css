@@ -17,6 +17,7 @@ body {
   .topnav {
     position: static;
     width: 100%;
+    text-align: center; /* Center the button on mobile */
   }
 
   .map {
@@ -24,20 +25,40 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    top: 100px; /* Adjust the top margin based on your design */
+    top: 50px; /* Adjust the top margin based on your design */
     z-index: 7;
   }
 
   .sidebar {
-    position: static;
+    position: absolute;
+    left: 0;
     width: 100%;
     margin-top: 15px; /* Adjust the top margin based on your design */
     border-radius: 0; /* Remove border-radius for full width */
     padding: 10px; /* Adjust padding based on your design */
+    z-index: 9;
+    background-color: #fff; /* Adjust background color based on your design */
   }
 
   .sidebarback {
     display: none; /* Hide the background on mobile */
+  }
+
+  #geocoder-container {
+    margin-top: 10px; /* Adjust the top margin based on your design */
+  }
+
+  #sidebar-content {
+    margin-top: 10px; /* Adjust the top margin based on your design */
+  }
+
+  .sidebar-title,
+  .sidebar-subtitle {
+    text-align: center; /* Center the text on mobile */
+  }
+
+  .geocoder-container {
+    text-align: center; /* Center the geocoder container on mobile */
   }
   
   /* Add any additional mobile-specific styles here */
