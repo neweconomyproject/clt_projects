@@ -47,6 +47,7 @@ var geocoder = L.Control.geocoder({
 function getTouchingGeoJSON(marker) {
   var touchingLayers = [];
 
+  //These are the ones that ONLY polygons
   var geojsonSources2 = {
     "bkLVLup": bkLVLup,
     "BronxCLT": BronxCLT,
@@ -123,6 +124,7 @@ var addToMap = function () {
   });
 };
 
+//these are the ones that are polygons and points
 var geojsonSources = {
   "bkLVLup": bkLVLup,
   "BronxCLT2": BronxCLT2,
@@ -135,13 +137,15 @@ var geojsonSources = {
   "EastNY": EastNY,
   "MaryMitchell": MaryMitchell,
   "MottHaven": MottHaven,
-  //"NorthernManhattan": "Northern Manhattan CLT",
+  "NorthernManhattan": NorthernManhattan,
   "northfield": northfield,
   "ravenswood": ravenswood,
   "realE": realE,
   "WeStay": WeStay,
-  "WesternQueens2": WesternQueens2,
+  "WesternQueens2": WesternQueens2, 
 };
+
+//these are the js file name on left and actual name on right
 var geojsonnames = {
   "bkLVLup": "Brooklyn Level Up",
   "BronxCLT2": "Bronx CLT",
@@ -154,7 +158,7 @@ var geojsonnames = {
   "EastNY": "East New York CLT",
   "MaryMitchell": "Mary Mitchell Family & Youth Center",
   "MottHaven": "Mott Haven Port Morris Community Land Stewards",
-  //"NorthernManhattan": "Northern Manhattan CLT",
+  "NorthernManhattan": "Northern Manhattan CLT",
   "northfield": "Northfield",
   "ravenswood": "Ravenswood",
   "realE": "ReAL Edgemere CLT",

@@ -1,4 +1,4 @@
-var NortherManhattan={
+var NorthernManhattan={
 "type": "FeatureCollection",
 "name": "northern-manhattan",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

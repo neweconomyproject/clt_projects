@@ -13,7 +13,25 @@ body {
   top: 0px;
 }
 
-
+@media only screen and (max-width: 768px) {
+  /* Styles for screens smaller than 768px (e.g., mobile devices) */
+  .topbuttonsleft {
+    padding-left: 15px;
+    font-size: 20px;
+  }
+  .topnav a {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .map {
+    top: 30px;
+  }
+  .sidebar,
+  .sidebarback {
+    left: 10px;
+    width: calc(100% - 20px);
+  }
+}
 .topnav a {
   font-family: 'Knockout-HTF48-Featherweight'; 
   float: left;
@@ -60,18 +78,17 @@ body {
   margin-top: 15px; 
 }
 
-.map {
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  top: 50px;
-  z-index: 7;
-}
-
 .custom-marker {
   background-color: gray;
   border-radius: 50%;
+}
+.map {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 50px;
+  z-index: 7;
 }
 
 .sidebar {
@@ -86,7 +103,19 @@ body {
   font-size: 16px;
   z-index: 9;
   padding: 10px;
-  font-family: 'Source Sans 3', sans-serif; 
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  .map {
+    top: 30px;
+  }
+
+  .sidebar,
+  .sidebarback {
+    left: 10px;
+    width: calc(100% - 20px);
+  }
 }
 
 .response-message {
@@ -142,8 +171,8 @@ body {
 }
 
 .sidebar-image {
-  max-width: 100%; /* Ensure images don't stretch beyond their original size */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 100%;
+  height: auto;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
