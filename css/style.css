@@ -15,9 +15,8 @@ body {
 
 @media (max-width: 767px) {
   .topnav {
-    position: static;
-    width: 100%;
     text-align: center; /* Center the button on mobile */
+    padding-bottom: 10px; /* Add some bottom padding for spacing */
   }
 
   .map {
@@ -25,17 +24,19 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    top: 50px; /* Adjust the top margin based on your design */
-    z-index: 1; /* Lower the z-index to ensure map is displayed above */
+    top: 60px; /* Adjust the top margin based on your design */
+    z-index: 1; /* Lower the z-index to ensure the map is displayed above */
   }
 
   .sidebar {
     position: absolute;
     left: 0;
     width: 100%;
-    margin-top: 50px; /* Adjust the top margin based on your design */
-    height: calc(100vh - 50px); /* Adjust the height to leave space for the map */
+    margin-top: 60px; /* Adjust the top margin based on your design */
+    height: calc(100vh - 60px); /* Adjust the height to leave space for the map */
     background-color: #fff; /* Adjust background color based on your design */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    padding: 10px; /* Add padding to the sidebar content */
   }
 
   .sidebarback {
@@ -136,17 +137,6 @@ body {
   font-family: 'Source Sans 3', sans-serif;
 }
 
-@media only screen and (max-width: 768px) {
-  .map {
-    top: 30px;
-  }
-
-  .sidebar,
-  .sidebarback {
-    left: 10px;
-    width: calc(100% - 20px);
-  }
-}
 
 .response-message {
   font-size: 16px;
