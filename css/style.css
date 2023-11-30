@@ -15,52 +15,42 @@ body {
 
 @media (max-width: 767px) {
   .topnav {
-    text-align: center; /* Center the button on mobile */
-    padding-bottom: 10px; /* Add some bottom padding for spacing */
+    text-align: center;
+    padding: 10px; /* Adjust padding for better spacing */
   }
 
   .map {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 60px; /* Adjust the top margin based on your design */
-    z-index: 1; /* Lower the z-index to ensure the map is displayed above */
+    position: relative; /* Change to relative */
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    z-index: 1;
   }
 
   .sidebar {
-    position: absolute;
-    left: 0;
+    position: relative; /* Change to relative */
     width: 100%;
-    margin-top: 60px; /* Adjust the top margin based on your design */
-    height: calc(100vh - 60px); /* Adjust the height to leave space for the map */
-    background-color: #fff; /* Adjust background color based on your design */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
-    padding: 10px; /* Add padding to the sidebar content */
-  }
-
-  .sidebarback {
-    display: none; /* Hide the background on mobile */
-  }
-
-  #geocoder-container {
-    margin-top: 10px; /* Adjust the top margin based on your design */
+    margin-top: 0;
+    height: auto; /* Auto height */
+    background-color: #fff;
+    overflow: hidden;
   }
 
   #sidebar-content {
-    margin-top: 10px; /* Adjust the top margin based on your design */
+    padding: 10px; /* Add padding to the sidebar content */
+  }
+
+  .geocoder-container {
+    text-align: center;
   }
 
   .sidebar-title,
   .sidebar-subtitle {
-    text-align: center; /* Center the text on mobile */
+    text-align: center;
   }
 
-  .geocoder-container {
-    text-align: center; /* Center the geocoder container on mobile */
+  .sidebarback {
+    display: none;
   }
-  
-  /* Add any additional mobile-specific styles here */
 }
 
 .topnav a {
