@@ -12,35 +12,44 @@ body {
   right: 0px;
   top: 0px;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 @media only screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   .sidebarback {
     width: 100%;
     height: 40vh; /* 1/3 of the viewport height */
     top: 0px;
-    left: 0;
+    left: 0px;
     border-radius: 0; /* Remove border radius */
-    background-color: #00FF00;
+    background-color: #00FFFF;
   }
   .sidebar {
     width: 100%;
     top: 0px;
-    left: 0;
+    left: 0px;
     height: 40vh; /* Match the height of sidebarback */
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
     font-family: 'Source Sans 3', sans-serif;
-    background-color: #00FF00;
+    background-color: #00FFFF;
   }
 
   #sidebar-content {
     width: 100%;
     top: 0px;
-    left: 0;
+    left: 0px;
     height: 40vh; /* Match the height of sidebarback */
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
-    background-color: #00FF00;
+    background-color: #00FFFF;
   }
   .sidebar-title {
     padding-left: 15px;
