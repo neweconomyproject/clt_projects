@@ -90,7 +90,7 @@ body {
   font-size: 16px;
   z-index: 9;
   padding: 10px;
-  background-color:#7FFFD4;
+  background-color: rgba(255,255,255,0.5);
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -230,7 +230,7 @@ body {
     margin-right: 0px;
     margin-top: 0px;
     border-radius: 0;
-    background-color:  #800080;
+    background-color: rgba(255,255,255,0.5);
   }
 
   .sidebar {
@@ -244,7 +244,6 @@ body {
     border-radius: 0;
     margin-top: 0;
     font-family: 'Source Sans 3', sans-serif;
-    background-color:  #800080;
   }
 
   #sidebar-content {
@@ -256,7 +255,6 @@ body {
     height: auto; /* Adjusted to auto height */
     border-radius: 0;
     margin-top: 0;
-    background-color:  #800080;
     clear: both; /* Add this property to clear the float */
   }
 
