@@ -90,7 +90,7 @@ body {
   font-size: 16px;
   z-index: 9;
   padding: 10px;
-  background-color: #800080;
+  background-color: #00FFFF;
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -234,6 +234,7 @@ body {
     border-radius: 0;
     margin-top: 0;
     font-family: 'Source Sans 3', sans-serif;
+    background-color:  #800080;
   }
 
   #sidebar-content {
@@ -246,6 +247,7 @@ body {
     height: auto; /* Adjusted to auto height */
     border-radius: 0;
     margin-top: 0;
+    background-color:  #800080;
   }
 
   .response-message {
