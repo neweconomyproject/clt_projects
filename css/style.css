@@ -23,50 +23,42 @@ body {
     padding: 0;
   }
 
-  .sidebar {
-    border-radius: 5px;
-    position: absolute;
-    left: 10px; /* Adjusted left margin */
-    right: 10px; /* Added right margin */
-    width: calc(100% - 20px); /* Adjusted width to accommodate both margins */
-    top: 64px;
-    bottom: 30px;
-    overflow-y: auto;
-    padding: 15px;
-    font-size: 16px;
-    z-index: 9;
-    font-family: 'Source Sans 3', sans-serif;
-  }
-
   .sidebarback {
-    border-radius: 5px;
-    position: absolute;
-    left: 10px; /* Adjusted left margin */
-    right: 10px; /* Added right margin */
-    width: calc(100% - 20px); /* Adjusted width to accommodate both margins */
-    top: 64px;
-    bottom: 30px;
-    overflow-y: auto;
-    padding: 15px;
-    font-size: 16px;
+    width: 100%;
+    height: 40vh; /* 1/3 of the viewport height */
+    top: 0px;
+    left: 0px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-top:0px;
+    border-radius: 0; /* Remove border radius */
     background-color: #FF0000;
-    opacity: 0.77;
-    z-index: 8;
+  }
+  .sidebar {
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-top:0px;
+    height: 40vh; /* Match the height of sidebarback */
+    border-radius: 0; /* Remove border radius */
+    margin-top: 0; /* Adjust margin top */
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: #FF0000;
   }
 
   #sidebar-content {
-    border-radius: 5px;
-    position: absolute;
-    left: 10px; /* Adjusted left margin */
-    right: 10px; /* Added right margin */
-    width: calc(100% - 20px); /* Adjusted width to accommodate both margins */
-    top: 64px;
-    bottom: 30px;
-    overflow-y: auto;
-    padding: 15px;
-    font-size: 16px;
-    z-index: 10;
-    font-family: 'Source Sans 3', sans-serif;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-top:0px;
+    height: 35vh; /* Match the height of sidebarback */
+    border-radius: 0; /* Remove border radius */
+    margin-top: 0; /* Adjust margin top */
+    background-color: #FF0000;
   }
   .sidebar-title {
     padding-left: 15px;
