@@ -13,131 +13,21 @@ body {
   top: 0px;
 }
 
-@media (max-width: 767px) {
-  .topnav {
-    overflow: hidden;
-    background-color: #000000;
-    z-index: 100;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .map {
-    position: relative;
+@media only screen and (max-width: 600px) {
+  .sidebarback {
     width: 100%;
-    height: 300px;
-    z-index: 1;
+    height: 33.33vh; /* 1/3 of the viewport height */
+    top: 0;
+    left: 0;
+    border-radius: 0; /* Remove border radius */
   }
 
   #sidebar-content {
-    border-radius: 5px;
-    font-size: 14px;
-    font-family: 'Source Sans 3', sans-serif;
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color: #cccccc; /* Gray */
-    overflow-y: auto;
-    position: absolute;
-    left: 10px;
-    width: calc(100% - 20px);
-    top: 64px;
-    bottom: 30px;
-  }
-
-  .geocoder-container {
-    text-align: center;
-    margin-top: 10px;
-    background-color: #ff0000; /* Red */
-  }
-
-  .sidebar-title,
-  .sidebar-subtitle {
-    text-align: center;
-    font-size: 16px;
-    background-color: #00ff00; /* Green */
-  }
-
-  .topbuttonsleft {
-    padding: 10px;
-    padding-left: 20px;
-    font-size: 24px;
-    background-color: #0000ff; /* Blue */
-  }
-
-  .map {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 50px;
-    z-index: 7;
-  }
-
-  .sidebar,
-  .sidebarback {
-    border-radius: 5px;
-    position: absolute;
-    left: 10px;
-    width: calc(100% - 20px);
-    top: 64px;
-    bottom: 30px;
-    overflow-y: auto;
-    font-size: 14px;
-    z-index: 9;
-  }
-
-  .sidebarback {
-    background-color: #ffff00; /* Yellow */
-    opacity: 0.77;
-    z-index: 8;
-  }
-
-  .sidebar-info {
-    text-align: left;
-    margin-top: 20px;
-    background-color: #ff00ff; /* Purple */
-  }
-
-  .sidebar-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-top: 20px;
-    background-color: #ff9900; /* Orange */
-  }
-
-  .sidebar-website {
-    font-size: 12px;
-    color: #0066cc;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-    background-color: #9900cc; /* Dark Purple */
-  }
-
-  .sidebar-website:hover {
-    text-decoration: underline;
-  }
-
-  .sidebar-description {
-    font-size: 12px;
-    margin-bottom: 10px;
-    background-color: #ffcc00; /* Light Orange */
-  }
-
-  .sidebar-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    background-color: #00cc66; /* Turquoise */
+    height: 33.33vh; /* Match the height of sidebarback */
+    border-radius: 0; /* Remove border radius */
+    margin-top: 0; /* Adjust margin top */
   }
 }
-
 .topnav a {
   font-family: 'Knockout-HTF48-Featherweight'; 
   float: left;
