@@ -34,13 +34,18 @@ body {
   }
 
   #sidebar-content {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Source Sans 3', sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #cccccc; /* Gray */
+    overflow-y: auto;
+    position: absolute;
+    left: 10px;
     width: calc(100% - 20px);
-    margin-top: 0;
-    height: auto;
-    overflow: hidden;
+    top: 64px;
+    bottom: 30px;
   }
 
   .geocoder-container {
