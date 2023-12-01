@@ -35,7 +35,6 @@ body {
 
   #sidebar-content {
     padding: 10px;
-    background-color: #1eae2f;
     width: calc(100% - 20px);
     margin-top: 0;
     height: auto;
@@ -45,26 +44,21 @@ body {
   .geocoder-container {
     text-align: center;
     margin-top: 10px;
+    background-color: #ff0000; /* Red */
   }
 
   .sidebar-title,
   .sidebar-subtitle {
     text-align: center;
     font-size: 16px;
+    background-color: #00ff00; /* Green */
   }
 
   .topbuttonsleft {
     padding: 10px;
     padding-left: 20px;
     font-size: 24px;
-  }
-
-  .sidebar-title {
-    font-size: 18px;
-  }
-
-  .sidebar-subtitle {
-    font-size: 12px;
+    background-color: #0000ff; /* Blue */
   }
 
   .map {
@@ -90,7 +84,7 @@ body {
   }
 
   .sidebarback {
-    background-color: #e3e3e3;
+    background-color: #ffff00; /* Yellow */
     opacity: 0.77;
     z-index: 8;
   }
@@ -98,6 +92,7 @@ body {
   .sidebar-info {
     text-align: left;
     margin-top: 20px;
+    background-color: #ff00ff; /* Purple */
   }
 
   .sidebar-name {
@@ -105,6 +100,7 @@ body {
     font-weight: bold;
     margin-bottom: 5px;
     margin-top: 20px;
+    background-color: #ff9900; /* Orange */
   }
 
   .sidebar-website {
@@ -113,6 +109,7 @@ body {
     text-decoration: none;
     display: block;
     margin-bottom: 10px;
+    background-color: #9900cc; /* Dark Purple */
   }
 
   .sidebar-website:hover {
@@ -122,6 +119,7 @@ body {
   .sidebar-description {
     font-size: 12px;
     margin-bottom: 10px;
+    background-color: #ffcc00; /* Light Orange */
   }
 
   .sidebar-image {
@@ -129,6 +127,7 @@ body {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #00cc66; /* Turquoise */
   }
 }
 
