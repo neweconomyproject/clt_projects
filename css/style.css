@@ -90,7 +90,7 @@ body {
   font-size: 16px;
   z-index: 9;
   padding: 10px;
-  background-color:#FFC0CB;
+  background-color:#7FFFD4;
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -123,7 +123,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
-  margin-top: 20px; 
+  margin-top: 30px; 
   font-family: 'Source Sans 3', sans-serif; 
 }
 
@@ -249,7 +249,6 @@ body {
 
   #sidebar-content {
     width: 100%;
-    top: 0px;
     left: 0px;
     margin-left: 0px;
     margin-right: 0px;
@@ -258,6 +257,7 @@ body {
     border-radius: 0;
     margin-top: 0;
     background-color:  #800080;
+    clear: both; /* Add this property to clear the float */
   }
 
   .response-message {
