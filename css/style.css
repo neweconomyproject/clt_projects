@@ -4,7 +4,7 @@ body {
   padding:0;
 }
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;400&display=swap');
-/* .topnav {
+.topnav {
   overflow: hidden;
   background-color: #000000 ;
   z-index: 100;
@@ -16,7 +16,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-} */
+}
 
 @media only screen and (max-width: 600px) {
   body {
