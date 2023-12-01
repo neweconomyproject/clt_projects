@@ -172,27 +172,66 @@ body {
     padding: 0;
   }
 
+  .geocoder-container {
+    padding-left: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .map {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    top: 50px;
+    z-index: 7;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #000000;
+    z-index: 100;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+  }
+
+  .topnav a {
+    font-family: 'Knockout-HTF48-Featherweight';
+    float: left;
+    color: #ffcb07;
+    text-align: center;
+    padding: 14px 16px;
+    width: 100%;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
   .sidebarback {
     width: 100%;
-    height: 40vh; /* 1/3 of the viewport height */
+    height: 40vh;
     top: 0px;
     left: 0px;
-    margin-left:0px;
-    margin-right:0px;
-    margin-top:0px;
-    border-radius: 0; /* Remove border radius */
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    border-radius: 0;
     background-color: #e3e3e3;
   }
+
   .sidebar {
     width: 100%;
     top: 0px;
     left: 0px;
-    margin-left:0px;
-    margin-right:0px;
-    margin-top:0px;
-    height: 40vh; /* Match the height of sidebarback */
-    border-radius: 0; /* Remove border radius */
-    margin-top: 0; /* Adjust margin top */
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    height: 40vh;
+    border-radius: 0;
+    margin-top: 0;
     font-family: 'Source Sans 3', sans-serif;
     background-color: #e3e3e3;
   }
@@ -201,63 +240,17 @@ body {
     width: 100%;
     top: 0px;
     left: 0px;
-    margin-left:0px;
-    margin-right:0px;
-    margin-top:0px;
-    height: 35vh; /* Match the height of sidebarback */
-    border-radius: 0; /* Remove border radius */
-    margin-top: 0; /* Adjust margin top */
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    height: auto; /* Adjusted to auto height */
+    border-radius: 0;
+    margin-top: 0;
     background-color: #e3e3e3;
   }
-  .sidebar-title {
-    padding-left:0px;
-    font-family: 'Source Sans 3', sans-serif; 
-    font-size: 20px; 
-    font-weight: bold;
-    margin-bottom: 5px;
+
+  .response-message {
+    margin-top: 20px; /* Add margin for separation */
+    font-size: 16px;
   }
-  
-  .sidebar-subtitle {
-    padding-left: 0px;
-    padding-right: 15px;
-    font-size: 14px; 
-    font-style: italic;
-    font-family: 'Source Sans 3', sans-serif; 
-  }
-  
-  .geocoder-container {
-    padding-left: 0px;
-    margin-top: 15px; 
-    margin-bottom: 15px;
-  }
-  .map {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width:100%;
-    top: 50px;
-    z-index: 7;
-  }
-  .topnav {
-    overflow: hidden;
-    background-color: #000000 ;
-    z-index: 100;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    width:100%;
-  }
-  .topnav a {
-    font-family: 'Knockout-HTF48-Featherweight'; 
-    float: left;
-    color: #ffcb07;
-    text-align: center;
-    padding: 14px 16px;
-    width:100%;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
 }
