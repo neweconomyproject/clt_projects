@@ -252,4 +252,35 @@ body {
     margin-top: 20px; /* Add margin for separation */
     font-size: 16px;
   }
+  .sidebar-info {
+    text-align: left;
+    margin-top: 20px; 
+  }
+  
+  .sidebar-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 20px; 
+    font-family: 'Source Sans 3', sans-serif; 
+  }
+  
+  .sidebar-website {
+    font-size: 12px;
+    color: #0066cc; 
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Source Sans 3', sans-serif; 
+  }
+  
+  .sidebar-website:hover {
+    text-decoration: underline;
+  }
+  
+  .sidebar-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: 'Source Sans 3', sans-serif; 
+  }
 }
