@@ -20,6 +20,7 @@ body {
     top: 0;
     left: 0;
     border-radius: 0; /* Remove border radius */
+    background-color: red;
   }
   .sidebar {
     width: 100%;
