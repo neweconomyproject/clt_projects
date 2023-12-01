@@ -6,9 +6,11 @@ var map = L.map('map', {
 });
 
 // Add zoom control top right
-L.control.zoom({
-  position: 'topright'
-}).addTo(map);
+if (window.innerWidth >= 600) {
+  L.control.zoom({
+    position: 'topright'
+  }).addTo(map);
+}
 
 //load leaflet map
 var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
