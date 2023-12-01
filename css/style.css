@@ -151,12 +151,17 @@ body {
   }
 
   #sidebar-content {
-    margin-top: 50px;
     border-radius: 5px;
-    font-size: 12px;
+    position: absolute;
+    left: 10px;
+    width: calc(100% - 20px);
+    top: 64px;
+    bottom: 30px;
+    overflow-y: auto;
+    padding: 15px;
+    font-size: 14px;
+    z-index: 9;
     font-family: 'Source Sans 3', sans-serif;
-    padding-left: 15px;
-    padding-right: 15px;
   }
 }
 
