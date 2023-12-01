@@ -81,7 +81,7 @@ body {
 .sidebar {
   border-radius: 5px;
   position: absolute;
-  left: 0px;
+  left: 22px;
   width: 390px;
   top: 64px;
   bottom: 30px;
@@ -90,6 +90,7 @@ body {
   font-size: 16px;
   z-index: 9;
   padding: 10px;
+  background-color: #e3e3e3;
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -109,7 +110,6 @@ body {
   overflow-y: auto;
   padding: 15px;
   font-size: 16px;
-  background-color: #e3e3e3;
   opacity: 0.77;
   z-index: 8;
 }
@@ -181,7 +181,7 @@ body {
     margin-right:0px;
     margin-top:0px;
     border-radius: 0; /* Remove border radius */
-    background-color: #FFA500;
+    background-color: #e3e3e3;
   }
   .sidebar {
     width: 100%;
@@ -194,7 +194,7 @@ body {
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
     font-family: 'Source Sans 3', sans-serif;
-    background-color: #FFA500;
+    background-color: #e3e3e3;
   }
 
   #sidebar-content {
@@ -207,7 +207,7 @@ body {
     height: 35vh; /* Match the height of sidebarback */
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
-    background-color: #FFA500;
+    background-color: #e3e3e3;
   }
   .sidebar-title {
     padding-left:0px;
@@ -228,6 +228,7 @@ body {
   .geocoder-container {
     padding-left: 0px;
     margin-top: 15px; 
+    margin-bottom: 15px;
   }
   .map {
     position: absolute;
