@@ -1,9 +1,10 @@
 @import url(https://db.onlinewebfonts.com/c/aa0db18808f131f9ace744ef97cb54f7?family=Knockout-HTF48-Featherweight);
 body {
   margin: 0;
+  padding:0;
 }
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;400&display=swap');
-.topnav {
+/* .topnav {
   overflow: hidden;
   background-color: #000000 ;
   z-index: 100;
@@ -15,7 +16,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-}
+} */
 
 @media only screen and (max-width: 600px) {
   body {
@@ -111,7 +112,7 @@ body {
   }
   
 }
-.topnav a {
+/* .topnav a {
   font-family: 'Knockout-HTF48-Featherweight'; 
   float: left;
   color: #ffcb07;
@@ -257,4 +258,4 @@ body {
 .show {
   display: block;
 }
-
+ */
