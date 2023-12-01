@@ -21,12 +21,45 @@ body {
     left: 0;
     border-radius: 0; /* Remove border radius */
   }
+  .sidebar {
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 33.33vh; /* Match the height of sidebarback */
+    border-radius: 0; /* Remove border radius */
+    margin-top: 0; /* Adjust margin top */
+    font-family: 'Source Sans 3', sans-serif;
+  }
 
   #sidebar-content {
+    width: 100%;
+    top: 0;
+    left: 0;
     height: 33.33vh; /* Match the height of sidebarback */
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
   }
+  .sidebar-title {
+    padding-left: 15px;
+    font-family: 'Source Sans 3', sans-serif; 
+    font-size: 20px; 
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .sidebar-subtitle {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px; 
+    font-style: italic;
+    font-family: 'Source Sans 3', sans-serif; 
+  }
+  
+  .geocoder-container {
+    padding-left: 15px;
+    margin-top: 15px; 
+  }
+  
 }
 .topnav a {
   font-family: 'Knockout-HTF48-Featherweight'; 
