@@ -20,7 +20,7 @@ body {
     top: 0px;
     left: 0;
     border-radius: 0; /* Remove border radius */
-    background-color: rgb(0, 255, 68);
+    background-color: #00FF00;
   }
   .sidebar {
     width: 100%;
@@ -30,6 +30,7 @@ body {
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
     font-family: 'Source Sans 3', sans-serif;
+    background-color: #00FF00;
   }
 
   #sidebar-content {
@@ -39,6 +40,7 @@ body {
     height: 40vh; /* Match the height of sidebarback */
     border-radius: 0; /* Remove border radius */
     margin-top: 0; /* Adjust margin top */
+    background-color: #00FF00;
   }
   .sidebar-title {
     padding-left: 15px;
