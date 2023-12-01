@@ -219,7 +219,7 @@ body {
     margin-right: 0px;
     margin-top: 0px;
     border-radius: 0;
-    background-color:  #00FFFF;
+    background-color:  #00FF00;
   }
 
   .sidebar {
@@ -233,7 +233,7 @@ body {
     border-radius: 0;
     margin-top: 0;
     font-family: 'Source Sans 3', sans-serif;
-    background-color:  #00FFFF;
+    background-color: #00FF00;
   }
 
   #sidebar-content {
@@ -242,11 +242,11 @@ body {
     left: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    margin-top: 50px;
+    margin-top: 100px;
     height: auto; /* Adjusted to auto height */
     border-radius: 0;
     margin-top: 0;
-    background-color:  #00FFFF;
+    background-color: #00FF00;
   }
 
   .response-message {
