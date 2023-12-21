@@ -59,10 +59,10 @@ body {
 
 .sidebar-title {
   padding-left: 20px;
+  padding-top: 30px;
   font-family: 'Source Sans 3', sans-serif; 
   font-size: 25px; 
   font-weight: bolder;
-  margin-top: 45px;
   margin-bottom: 5px;
 }
 
