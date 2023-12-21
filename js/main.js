@@ -212,7 +212,7 @@ function handleGeoJSONLayer(geojsonName) {
     // Create GeoJSON layer with custom style
     currentGeoJSONLayer = L.geoJSON(geojsonSources[geojsonName], {
       style: {
-        fillColor: 'lightgray',  
+        fillColor: 'yellow',  
         color: 'darkgray',       
         weight: 1                
       },
