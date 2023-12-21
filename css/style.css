@@ -139,7 +139,7 @@ body {
 .sidebar-website {
   font-size: 14px;
   color: #0066cc; 
-  text-decoration: none;
+  text-decoration: underline;
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
