@@ -60,10 +60,6 @@ body {
   font-family: 'Source Sans 3', sans-serif; 
 }
 
-.geocoder-container {
-  padding-left: 15px;
-  margin-top: 15px; 
-}
 
 .custom-marker {
   background-color: gray;
