@@ -145,7 +145,7 @@ body {
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: 'Source Sans 3', sans-serif; 
+  font-family: 'Roboto', sans-serif; 
 }
 
 .sidebar-website:hover {
@@ -155,7 +155,7 @@ body {
 .sidebar-description {
   font-size: 14px;
   margin-bottom: 10px;
-  font-family: 'Source Sans 3', sans-serif; 
+  font-family: 'Roboto', sans-serif; 
 }
 
 .sidebar-image {
@@ -169,7 +169,7 @@ body {
   margin-top: 50px;
   border-radius: 5px;
   font-size: 14px;
-  font-family: 'Source Sans 3', sans-serif; 
+  font-family: 'Roboto', sans-serif; 
   padding-left: 15px;
   padding-right:15px;
 }
