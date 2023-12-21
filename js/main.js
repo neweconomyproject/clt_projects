@@ -1,6 +1,6 @@
 // Load map
 var map = L.map('map', {
-  center: [40.708020, -73.986775],
+  center: [40.743337479156224, -73.99996110172528],
   zoom: 11,
   zoomControl: false
 });
