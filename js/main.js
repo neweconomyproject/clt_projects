@@ -21,15 +21,6 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
   ext: 'png'
 }).addTo(map);
 
-// Create a geocoding control and add it to the new div in the sidebar
-var geocoderContainer = L.DomUtil.get('geocoder-container');
-var geocoder = L.Control.geocoder({
-  defaultMarkGeocode: false
-}).on('markgeocode', function (e) {
-  if (currentMarker) {
-    map.removeLayer(currentMarker);
-  }
-  currentMarker = L.marker(e.geocode.center).addTo(map);
 
   // Check if the marker is touching or intersecting with any GeoJSON layer
   var touchingGeoJSON = getTouchingGeoJSON(currentMarker);
