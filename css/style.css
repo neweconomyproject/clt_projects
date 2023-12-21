@@ -137,10 +137,11 @@ body {
 }
 
 .sidebar-website {
-  font-size: 12px;
+  font-size: 14px;
   color: #0066cc; 
   text-decoration: none;
   display: block;
+  margin-top: 10px;
   margin-bottom: 10px;
   font-family: 'Source Sans 3', sans-serif; 
 }
