@@ -44,6 +44,19 @@ body {
 .topbuttonsleft:hover {
   cursor: pointer;
 }
+
+.topbuttonsmid {
+  transition-duration: 0.4s;
+  font-family: 'Knockout-HTF48-Featherweight'; 
+  padding: 10px;
+  padding-left:30px;
+  font-weight: bolder;
+  color: #ffffff;
+  font-size: 10px;
+  background: none;
+  border: none;
+}
+
 .sidebar-title {
   padding-left: 15px;
   font-family: 'Source Sans 3', sans-serif; 
