@@ -243,9 +243,9 @@ newArray.forEach((element, i) => {
     var content =
       "<div class='sidebar-info'>" +
       "<h2 class='sidebar-name'>" + element[1].Name + "</h2>" +
+      "<img src='" + element[1].Image + "' class='sidebar-image' />" +
       "<a class='sidebar-website' href='https://" + element[1].Website + "' target='_blank'>" + element[1].Website + "</a>" +
       "<p class='sidebar-description'>" + element[1].Description + "</p>" +
-      "<img src='" + element[1].Image + "' class='sidebar-image' />" +
       "</div>";
     sidebarContent.innerHTML = content;
     // Handle GeoJSON layers with custom styling
