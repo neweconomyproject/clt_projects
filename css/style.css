@@ -61,7 +61,8 @@ body {
 .sidebar-title {
   padding-left: 20px;
   padding-top: 30px;
-  font-family: 'Source Sans 3', sans-serif; 
+  font-family: 'Roboto', sans-serif; 
+  color: #ffffff;
   font-size: 25px; 
   font-weight: bolder;
   margin-bottom: 5px;
@@ -71,8 +72,9 @@ body {
   padding-left: 16px;
   padding-right: 15px;
   font-size: 14px; 
+  color: #ffffff;
   font-style: italic;
-  font-family: 'Source Sans 3', sans-serif; 
+  font-family: 'Roboto', sans-serif; 
 }
 
 
@@ -101,7 +103,7 @@ body {
   font-size: 16px;
   z-index: 9;
   padding: 10px;
-  background-color: 	rgb(23,23,23,0.2);
+  background-color: 	rgb(13,13,13,0.12);
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -135,7 +137,8 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
   margin-top: 30px; 
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff; 
 }
 
 .sidebar-website {
@@ -156,6 +159,7 @@ body {
   font-size: 14px;
   margin-bottom: 10px;
   font-family: 'Roboto', sans-serif; 
+  color: #ffffff;
 }
 
 .sidebar-image {
