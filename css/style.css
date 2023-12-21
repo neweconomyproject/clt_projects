@@ -1,4 +1,5 @@
 @import url(https://db.onlinewebfonts.com/c/aa0db18808f131f9ace744ef97cb54f7?family=eagle-book);
+@import url(https://db.onlinewebfonts.com/c/aa0db18808f131f9ace744ef97cb54f7?family=roboto);
 body {
   margin: 0;
   padding:0;
@@ -58,6 +59,7 @@ body {
 }
 
 .sidebar-title {
+  padding-top: 20px;
   padding-left: 20px;
   font-family: 'Roboto', sans-serif; 
   font-size: 25px; 
