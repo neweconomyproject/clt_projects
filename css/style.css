@@ -31,12 +31,12 @@ body {
 
 .topbuttonsleft {
   transition-duration: 0.4s;
-  font-family: 'Knockout-HTF48-Featherweight'; 
+  font-family: 'Eagle Book'; 
   padding: 10px;
   padding-left:30px;
   font-weight: bolder;
   color: #ffcb07;
-  font-size: 30px;
+  font-size: 40px;
   background: none;
   border: none;
 }
