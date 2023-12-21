@@ -168,13 +168,6 @@ body {
     padding: 0;
   }
 
-  .geocoder-container {
-    padding-left: 15px;
-    margin-top: 15px;
-    right: 15px;
-    margin-bottom: 15px;
-    clear: both; /* Add this property to clear the float */
-  }
 
   .sidebar-name {
     font-size: 18px;
