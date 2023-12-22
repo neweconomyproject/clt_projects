@@ -60,6 +60,7 @@ function getTouchingGeoJSON(marker) {
     "cooperSQ": cooperSQ,
     "EastHarlem": EastHarlem,
     "EastNY": EastNY,
+    "interboroclt": interboroclt,
     "MaryMitchell": MaryMitchell,
     "MottHaven": MottHaven,
     "NorthernManhattan": NorthernManhattan,

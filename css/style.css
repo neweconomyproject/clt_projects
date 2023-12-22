@@ -298,3 +298,8 @@ body {
     font-family: 'Source Sans 3', sans-serif; 
   }
 }
+
+/* Hide the geocoding control */
+.leaflet-control-geocoder {
+  display: none;
+}
