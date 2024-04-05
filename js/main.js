@@ -138,6 +138,7 @@ var geojsonSources = {
   "cooperSQ": cooperSQ,
   "EastHarlem2": EastHarlem2,
   "EastNY": EastNY,
+  "interboroclt": interboroclt,
   "MaryMitchell": MaryMitchell,
   "MottHaven": MottHaven,
   "NorthernManhattan": NorthernManhattan,
@@ -159,6 +160,7 @@ var geojsonnames = {
   "cooperSQ": "Cooper Square CLT",
   "EastHarlem2": "East Harlem El Barrio CLT",
   "EastNY": "East New York CLT",
+  "interboroclt": "Interboro CLT",
   "MaryMitchell": "Mary Mitchell Family & Youth Center",
   "MottHaven": "Mott Haven Port Morris Community Land Stewards",
   "NorthernManhattan": "Northern Manhattan CLT",
@@ -175,7 +177,7 @@ var sidebarContent = document.getElementById('sidebar-content');
 
 //define icon style
 var blackIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
